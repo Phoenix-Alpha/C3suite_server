@@ -1,0 +1,169 @@
+= form_for [:manage, @product], html: { class: 'form-horizontal' } do |f|
+  .card.card-default
+    .card-body
+      = errors_for(@product)
+
+      .form-group
+        = f.label :title, class: 'control-label'
+        = f.text_field :title, class: 'form-control', id: 'text_field_title', required: true
+      
+      .form-group
+        = f.label :app_store_bundle_id, class: 'control-label'
+        = f.text_field :app_store_bundle_id, class: 'form-control border-primary', placeholder: "i.e   com.c3.#{@product.title ? @product.title : 'product'}"
+
+      .form-group
+        = f.label :html_description, class: 'control-label'
+        = f.text_area :html_description, class: 'form-control tinymce'
+        = tinymce
+
+      .form-group
+        = f.label :tags, class: 'control-label'
+        %span.ml-2
+          (Hold
+          %span{class: 'badge badge-dark'} Ctrl
+          to select multiple Tags)
+
+        = f.select :tags, options_for_select(Tag.plucked, selected: f.object.tags), { include_blank: false }, { class: 'chosen-select form-control', id: 'product_tags', multiple: true, 'data-placeholder': 'Select Tag(s)' }
+
+      .form-group
+        = f.label :visibility, class: 'control-label'
+        = f.select :visibility, options_for_select(Product.visibility_options, @product.visibility), { include_blank: false }, { class: 'chosen-select form-control', 'data-placeholder': 'Select Visibility' }
+      .form-group
+        = f.label :price, class: 'control-label'
+        = f.select :price, options_for_select(price_tier , @product.price), { include_blank: false }, { class: 'chosen-select form-control', 'data-placeholder': 'Price Tier' }
+
+      -if @configs
+        .h4.text-dark.text-bold Theme
+        .pl-2.pt-2
+          .row
+            .col-md-6.col-xl-6.col-12  
+              .form-group.background-settings
+                %label
+                  Background Settings
+                .form-group.bg-check.m-4
+                  %label{ class: 'checkbox c-checkbox c-checkbox-rounded mr-4' }
+                    = f.check_box "background_type", { class: 'bg-image', checked: (@configs.present? and @configs[:background_type] == 'image' ? true : false)  }, "image", nil
+                    %span{ class: 'fa fa-check' } 
+                    Set Background Image
+                  
+                  %label{ class: 'checkbox c-checkbox c-checkbox-rounded' }
+                    = f.check_box "background_type", { class: 'bg-color', checked: (@configs.present? and @configs[:background_type] == 'color' ? true : false) }, "color", nil
+                    %span{ class: 'fa fa-check' }  
+                    Set Background Color
+
+                .form-group.m-4#bg-image-field{ class: (@configs.present? and @configs[:background_type]) == 'image' ? '' : 'd-none' }
+                  = f.hidden_field :background, value: @product.cached_background_data
+                  = f.file_field :background
+                  
+                .form-group.col-md-6.col-xl-6.col-sm-12#bg-color-field{ class: (@configs.present? and @configs[:background_type]) == 'color' ? '' : 'd-none' }
+                  .input-group.demo-colorpicker
+                    = f.text_field 'bg_color', { value: (@configs[:colors][:background] if @configs.present? and @configs[:colors].present?), class: 'form-control', id: 'demo_selectors' }
+                    .input-group-append.input-group-addon
+                      .input-group-text
+                        %span.fa.fa-palette.mr-2
+                        %i.b
+          .row.mt-3
+            .col-md-6.col-xl-6.col-sm-12
+              .form-group.layout-settings
+                %label
+                  Layout Settings
+                .row.layout-check
+                  .col-md-4.col-xl-4.col-sm-12.text-center.m-3
+                    %i{ class: 'fa fa-th-large fa-2x m-2' }
+                    %div
+                      %label{ class: 'checkbox c-checkbox c-checkbox-rounded' }
+                        = f.check_box "view_type", { class: 'tile-view', checked: (@configs.present? and @configs[:view_type] == 'tile' ? true : false) }, "tile", nil
+                        %span{ class: 'fa fa-check' }
+                        Tile View
+                  .col-md-4.col-xl-4.col-sm-12.text-center.m-3
+                    %i{ class: 'fa fa-list fa-2x m-2' }
+                    %div
+                      %label{ class: 'checkbox c-checkbox c-checkbox-rounded' }
+                        = f.check_box "view_type", { class: 'list-view', checked: (@configs.present? and @configs[:view_type] == 'list' ? true : false) }, "list", nil
+                        %span{ class: 'fa fa-check' }
+                        List View
+          %hr.m-4
+          .row.form-group
+            .col-md-5.col-xl-5.col-sm-12 
+              .h4.text-dark.text-bold Colors
+              %table.table.table-sm.table-responsive
+                %tbody.form-group.bg-check
+                  %tr
+                    %td
+                      = f.label 'primary', "Primary (Primary color for your app, usually your brand color)"
+                    %td
+                      .input-group.demo-colorpicker
+                        = f.text_field 'primary', { value: (@configs[:colors][:primary] if @configs.present? and @configs[:colors].present?), class: 'form-control' }
+                        .input-group-append.input-group-addon
+                          .input-group-text
+                            %span.fa.fa-palette.mr-2
+                            %i.b.border-0
+                  %tr
+                    %td
+                      = f.label 'accent', "Accent (Secondary color for your app which complements the primary color)"
+                    %td
+                      .input-group.demo-colorpicker
+                        = f.text_field 'accent', { value: (@configs[:colors][:accent] if @configs.present? and @configs[:colors].present?), class: 'form-control' }
+                        .input-group-append.input-group-addon
+                          .input-group-text
+                            %span.fa.fa-palette.mr-2
+                            %i.b.border-0
+
+                  %tr
+                    %th.form-group
+                      %label
+                      .h4.text-dark.text-bold Text Colors
+                  %tr
+                    %td
+                      = f.label 'web_headings_label', "Heading (Heading color for contents)"
+                    %td
+                      .input-group.demo-colorpicker
+                        = f.text_field 'web_headings', { value: (@configs[:colors][:headings] if @configs.present? and @configs[:colors].present?), class: 'form-control' }
+                        .input-group-append.input-group-addon
+                          .input-group-text
+                            %span.fa.fa-palette.mr-2
+                            %i.b.border-0
+                  %tr
+                    %td
+                      = f.label 'web_subheadings_label', "Sub heading (Sub headings color for contents)"
+                    %td
+                      .input-group.demo-colorpicker
+                        = f.text_field 'web_subheadings', { value: (@configs[:colors][:sub_headings] if @configs.present? and @configs[:colors].present?), class: 'form-control' }
+                        .input-group-append.input-group-addon
+                          .input-group-text
+                            %span.fa.fa-palette.mr-2
+                            %i.b.border-0
+                  %tr
+                    %td
+                      = f.label 'text', "Text (Text color for content)"
+                    %td
+                      .input-group.demo-colorpicker
+                        = f.text_field 'text', { value: (@configs[:colors][:text] if @configs.present? and @configs[:colors].present?), class: 'form-control' }
+                        .input-group-append.input-group-addon
+                          .input-group-text
+                            %span.fa.fa-palette.mr-2
+                            %i.b.border-0
+                  %tr
+                    %td
+                      = f.label 'web_button_label', "Button (Button color for your app)"
+                    %td
+                      .input-group.demo-colorpicker
+                        = f.text_field 'web_button', { value: (@configs[:colors][:button] if @configs.present? and @configs[:colors].present?), class: 'form-control' }
+                        .input-group-append.input-group-addon
+                          .input-group-text
+                            %span.fa.fa-palette.mr-2
+                            %i.b.border-0
+                  %tr
+                    %td
+                      = f.label 'web_text_link_label', "Text link (Text link color for links provided)"
+                    %td
+                      .input-group.demo-colorpicker
+                        = f.text_field 'web_text_link', { value: (@configs[:colors][:text_links] if @configs.present? and @configs[:colors].present?), class: 'form-control' }
+                        .input-group-append.input-group-addon
+                          .input-group-text
+                            %span.fa.fa-palette.mr-2
+                            %i.b.border-0
+                    
+    .card-footer
+      = link_to 'Back', manage_products_path(@product), class: 'btn btn-sm btn-secondary'
+      = f.submit class: 'btn btn-sm btn-primary'

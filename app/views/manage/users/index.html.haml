@@ -1,0 +1,43 @@
+.content-heading
+  Users
+
+  .ml-auto
+    = link_to 'New User', new_manage_user_path, class: 'btn btn-sm btn-success', 'data-turbolinks': false if can? :manage, @user
+
+- if @users.present?
+  .card.card-default
+    .card-body
+      .table-responsive
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %th Username
+              %th Email
+              %th Role
+              %th
+          %tbody
+            - @users.each do |user|
+              - if can? :read, User
+                %tr 
+                  %td
+                    = link_to user.username, manage_user_path(user), class: 'btn-link'
+                  %td
+                    = user.email
+                  %td
+                    = user.roles.collect {|role| link_to role.name, manage_role_path(role), class: 'btn-link' }.join(', ').html_safe unless user.roles.blank?
+                  %td 
+                    .btn-group
+                      %button.btn.btn-secondary{ type: 'button' } Action
+                      %button.btn.dropdown-toggle.btn-secondary{ 'data-toggle': 'dropdown', type: 'button' }
+                        %span.sr-only primary
+                      .dropdown-menu{ role: 'menu' }
+                        = link_to 'View', manage_user_path(user), class: 'dropdown-item' if can? :read, user
+                        - if can? :manage, User
+                          = link_to 'Edit', edit_manage_user_path(user), class: 'dropdown-item', 'data-turbolinks': false
+                          = link_to 'Destroy', manage_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
+- else
+  %p.well No records found
+
+= link_to 'Back', dashboard_path, class: 'btn btn-sm btn-secondary'
+= link_to 'New User', new_manage_user_path, class: 'btn btn-sm btn-success', 'data-turbolinks': false if can? :manage, @user
+

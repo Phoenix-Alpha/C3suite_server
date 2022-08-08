@@ -1,0 +1,6 @@
+.content-heading
+  Edit Product
+  .ml-auto
+    = link_to 'Manage AppStore Products', manage_product_app_store_path(@product), class: 'btn btn-sm btn-info'
+
+= render 'form', product: @product, content: @contents, app_setting: @app_settings

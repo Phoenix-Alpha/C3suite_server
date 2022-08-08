@@ -1,0 +1,19 @@
+.h2
+  = @modulee.title
+.card.card-default
+  .card-body
+    .row
+      .col-12
+        .float-right
+          Add:
+          = render 'manage/partials/add_new_actions', { product: @product, object: @modulee.content, type: "module" } 
+    %br
+    %div{ class: [('row sortable' if can? :update, Product), ('not-sortable' if cannot? :update, Product)] }
+      / Re-order by :row_order so that all the children specific to modulee are in order
+      - @modulee.children.order(:row_order).each do |child|
+        %div{ "data-content-id": child.id, class: "#{ (['submodule', 'html'].include? child.actable_type.downcase) ? 'col-12' : 'col-6' }"  }
+          = render partial: '/manage/products/' << child.actable_type.downcase, object: child
+
+  .card-footer
+    = link_to 'Back', manage_product_path(@product), class: 'btn btn-sm btn-secondary'
+    = link_to 'Edit', edit_manage_product_modulee_path(@product, @modulee), class: 'btn btn-sm btn-primary'

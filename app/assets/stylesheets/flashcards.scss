@@ -1,0 +1,51 @@
+/* Manage View */
+
+.flashcard-item-view .label {
+  position: absolute;
+  right: 0;
+  margin-top: -25px;
+  color: #999;
+}
+
+.well {
+position: relative;
+}
+
+/* Controls */
+
+.btn-flip-flashcard {
+color: #656565;
+}
+
+/* Form */
+
+
+.download-icon{
+  margin-right: 10px;
+  margin-left: 10px;
+  height:20px;
+  width:20px;
+  margin-bottom:25px;
+  display: inline;
+}
+h5 {
+  display : inline;
+}
+img{
+  vertical-align: top;
+}
+
+.img-thumbnail{
+  height:250px;
+  width:250px;
+  margin-bottom:25px;
+  display: inline;
+}
+
+.mt-5, .my-5 {
+  margin-top: 5rem !important;
+}
+
+.flashcard-sides{
+  height:270px;
+}

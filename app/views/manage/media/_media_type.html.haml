@@ -1,0 +1,8 @@
+- if media.present?
+  - if media.local_type == 'Video'
+    = video_tag media_source(media), controls: true, size: '300x200'
+  - elsif media.local_type == 'Audio'
+    = audio_tag media_source(media), controls: true
+  - else
+    %h5 Original
+    = image_tag media_source(media), class: 'img-thumbnail'

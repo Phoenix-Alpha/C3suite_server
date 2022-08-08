@@ -1,0 +1,67 @@
+.aside-inner
+  %nav.sidebar{'data-sidebar-anyclick-close': "" }
+    %ul.sidebar-nav
+      - if ['manage', 'dashboard'].include? namespace
+        %li.nav-heading
+          %span Main Navigation
+        %li{class: "#{'active' if controller?('dashboard')}"}
+          - if current_user && current_user.is_customer?
+            = link_to '<em class="icon-grid"></em><span>My Products</span>'.html_safe, dashboard_path, 'data-turbolinks': false
+          - else
+            = link_to '<em class="icon-grid"></em><span>Dashboard</span>'.html_safe, dashboard_path, 'data-turbolinks': false
+        - unless current_user.is_customer?
+          - if can? :read, User
+            %li{class: "#{'active' if controller?('manage/users')}"}
+              = link_to '<em class="fas fa-users-cog"></em><span>Manage Users</span>'.html_safe, manage_users_path, 'data-turbolinks': false 
+          - if can? :read, Bundle
+            %li{class: "#{'active' if controller?('manage/bundles')}"}
+              = link_to '<em class="fas fa-cog"></em><span>Manage Bundles</span>'.html_safe, manage_bundles_path, 'data-turbolinks': false
+          - if can? :read, Product
+            %li{class: "#{'active' if controller?('manage/products')}"}
+              = link_to '<em class="fas fa-cogs"></em><span>Manage Products</span>'.html_safe, manage_products_path, 'data-turbolinks': false 
+          - if can? :read, Tag
+            %li{class: "#{'active' if controller?('manage/tags')}"}
+              = link_to '<em class="fas fa-tags"></em><span>Manage Tags</span>'.html_safe, manage_tags_path, 'data-turbolinks': false 
+
+      - elsif ['products', 'contents'].include? namespace
+        - if (current_user && (current_user.product_ids.include? @product.id)) || UserSubscription.subscription_current?(current_user, @product)
+          %li.mt-2
+            = link_to "<em class='icon-info'></em><span>Product Info</span>".html_safe, product_url(@product), title: @product.title, 'data-turbolinks': false
+
+          %li.nav-heading
+            %span Modules
+          %li{class: "#{'active' if controller?('dashboard')}"}
+          - @product.contents.where(actable_type: "Modulee").each do |item|
+            - if item.children? && (item.specific.has_quizzes? || item.specific.has_flashcards?)
+              %li
+                = link_to "", "data-toggle": "collapse", href: "##{parameterize(item.title)}", title: "#{ item.title }", "data-turbolinks": false do
+                  %span
+                    = item.title
+            - else
+              %li
+                = link_to "<span>#{item.title}</span>".html_safe, content_path(item), title: item.title, 'data-turbolinks': false
+
+            %ul.sidebar-nav.sidebar-subnav.collapse{ id: "#{parameterize(item.title)}" }
+              %li
+                = link_to "<span>#{item.specific.section_title.present? ? item.specific.section_title : 'Show All' }</span>".html_safe, content_path(item), title: item.title, "data-turbolinks": false
+              - if (item.specific.configurations[:allow_build_quiz])
+                %li
+                  = link_to '<span>Build a Quiz</span>'.html_safe, show_build_a_quiz_content_path(item), 'data-turbolinks': false
+              - if (item.specific.configurations[:allow_build_flashcard])
+                %li
+                  = link_to '<span>Build a Flashcard</span>'.html_safe, show_build_a_flashcard_content_path(item), 'data-turbolinks': false
+              - if  (@product.configurations[:allow_comprehensive_quizzes] or item.specific.configurations[:allow_comprehensive_quizzes]) or (@product.configurations[:allow_comprehensive_flashcards] or item.specific.configurations[:allow_comprehensive_flashcards])
+                %li
+                  - if @product.configurations[:allow_comprehensive_quizzes] && item.specific.has_quizzes? 
+                    = link_to '<span>Comprehensive</span>'.html_safe, comprehensive_instructions_quizzes_path(content_id: item), 'data-turbolinks': false
+                  - elsif item.specific.configurations[:allow_comprehensive_quizzes] && item.specific.has_quizzes?
+                    = link_to '<span>Comprehensive</span>'.html_safe, comprehensive_instructions_quizzes_path(content_id: item), 'data-turbolinks': false
+              
+                  - if @product.configurations[:allow_comprehensive_flashcards] && item.specific.has_flashcards?
+                    = link_to '<span>Comprehensive</span>'.html_safe, comprehensive_flashcards_path(content_id: item.id), 'data-turbolinks': false
+                  - elsif item.specific.configurations[:allow_comprehensive_flashcards] && item.specific.has_flashcards?
+                    = link_to '<span>Comprehensive</span>'.html_safe, comprehensive_flashcards_path(content_id: item.id), 'data-turbolinks': false
+              - if (item.specific.configurations[:incorrect_answered_quiz])
+                %li
+                  = link_to '<span>Quiz for Incorrect</span>'.html_safe, incorrect_index_quizzes_path(content_id: item.id), 'data-turbolinks': false
+                

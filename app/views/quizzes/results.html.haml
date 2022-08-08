@@ -1,0 +1,53 @@
+.col-lg-8.offset-lg-2.col-md-12.col-sm-12.col-xs-12
+  .h3 Result History
+
+  .row
+    .col
+      - if @attempts.present?
+        %table.table.table-condensed
+          %thead
+            %tr
+              %th Title
+              %th Score
+              %th Time
+              %th Date
+              %th Status
+              %th 
+
+          %tbody
+            - @attempts.each_with_index do |attempt, index|
+              - path = nil
+              - if @quiz.present?
+                - path = result_quiz_path(@quiz.id, attempt.id)
+              - elsif @type == "Comprehensive"
+                - path = comprehensive_result_quizzes_path(content_id: @content.id, attempt_id: attempt.id)
+              - elsif @type == "Build"
+                - path = build_result_quizzes_path(content_id: @content.id, attempt_id: attempt.id)
+              - else
+                - path = incorrect_result_quizzes_path(content_id: @content.id, attempt_id: attempt.id)
+              %tr
+                %td
+                  = attempt.content.title
+                %td
+                  = correct_attempts = attempt.content_type_id.values.count {|v| v[:selected] == '0'} rescue attempt.content_type_id.values.count('0')
+                  = '/'
+                  = attempt.content_type_id.values.count
+                %td 
+                  = attempt.updated_at.strftime('%T') if attempt.updated_at.present?
+                %td 
+                  = attempt.updated_at.strftime('%m/%d/%Y') if attempt.updated_at.present?
+                %td
+                  - if @quiz.present?
+                    - if @quiz.passing_percentage?
+                      - result = result_status correct_attempts, @quiz.questions.count, @quiz.passing_percentage
+
+                      - if result
+                        %span.badge.badge-success.label-xs Passed
+                      - else
+                        %span.badge.badge-danger.label-xs Failed
+                %td  
+                  = link_to 'View', path, class: 'btn btn-sm btn-primary', 'data-turbolinks': false  
+                
+      - else
+        %p.well
+          No Records Found

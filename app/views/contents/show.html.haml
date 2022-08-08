@@ -1,0 +1,31 @@
+- if @content.actable_type == "Modulee"
+  .content-heading 
+    .container
+      = @content.specific.section_title.present? ? @content.specific.section_title : @content.title
+- elsif @content.actable_type == "Submodule"
+  .content-heading
+    = @content.title
+
+ 
+-if @product.configurations.present? and @product.configurations[:view_type] == 'tile'
+  .container
+    .row
+      - @content.children.order(:row_order).each do |child|
+        -if child.actable_type == "Submodule"
+          .col-12.mb-4
+            = render partial: child.actable_type.downcase, object: child rescue nil  
+        -else
+          .col-lg-4.col-md-6.mb-4
+            -if child.actable_type == "Media" and child.specific.source.present? 
+              = render partial: child.actable_type.downcase+'_block', object: child rescue nil
+            -else
+              = render partial: child.actable_type.downcase+'_block', object: child rescue nil
+            
+-else
+  .container
+    - @content.children.order(:row_order).each do |child|
+      .p-1
+        -if child.actable_type == "Media" and child.specific.source.present?  #check to handle empty media (after shrine implementation)  
+          = render partial: child.actable_type.downcase, object: child rescue nil
+        -elsif child.actable_type != "Media"
+          = render partial: child.actable_type.downcase, object: child rescue nil

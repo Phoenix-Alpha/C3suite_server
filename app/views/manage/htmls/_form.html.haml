@@ -1,0 +1,32 @@
+= form_for [:manage, @product, @html] do |f|
+  .card.card-default
+    .card-header
+    .card-body
+      = errors_for(@html)
+
+      = f.hidden_field :product_id, value: @product.id
+      = f.hidden_field :parent_id, value: @content.id if @content.present?
+
+      .form-group
+        %label= f.label :title
+        = f.text_field :title, class: 'form-control'
+
+      .form-group
+        %label= f.label :description
+        = f.text_field :description, class: 'form-control'
+        %p.help-block
+          (Not shown to users - For content management only)
+
+      .form-group
+        %label
+          HTML
+        = f.text_area :html_source, class: 'form-control tinymce', placeholder: 'Please use <strong>View > Source Code</strong> option to paste HTML source code ...'
+        = tinymce
+
+        %p.help-block
+          (Please use
+          %strong View > Source Code
+          option to paste HTML source code)
+
+    .card-footer
+      = f.submit class: 'btn btn-sm btn-primary'

@@ -1,0 +1,45 @@
+.h2
+  Flashcard Deck
+  = @flashcard.title
+%br
+.h4 Cards
+.help-block (Click on the tiles to flip sides)
+.row
+  .col-md-6
+    .btn.btn-default.btn-sm
+      = link_to 'Back', manage_product_path(@product), class: 'btn btn-primary btn-sm'
+    - if can? :update, @flashcard.acting_as
+      .btn.btn-default.btn-sm
+        = link_to 'Edit', edit_manage_product_flashcard_path(@product, @flashcard), class: 'btn btn-success btn-sm'
+
+- order = get_ordered_flashcard_sides @flashcard
+#flashcard-deck.row
+  - @flashcard_items.each_with_index do |item, index|
+    .col-6  
+      .card{ "data-flashcard-item-id": item.id }
+        .card-header
+          %h4.float-left
+            = "#{index + 1}"
+          .float-right
+            #toggle-sides.btn-group-toggle{"data-toggle" => "buttons"}
+              - order.each_with_index do |label, i|         
+                -if label.to_s == 'side'
+                  -if item.side.present?
+                    %label{ class: "btn btn-xs btn-info #{ (i == 0) ? 'active' : '' } #{label}-btn" }
+                      %input{type: 'radio', name: 'flashcard-sides', checked: (i == 0) ? true : '' }
+                      = get_flashcard_label item, label
+                -else
+                  %label{ class: "btn btn-xs btn-info #{ (i == 0) ? 'active' : '' } #{label}-btn" }
+                    %input{type: 'radio', name: 'flashcard-sides', checked: (i == 0) ? true : '' }
+                    = get_flashcard_label item, label      
+        .card-body
+          .flashcard-sides.justify-content-center{ class: 'd-flex' }
+            -order.each_with_index do |o, i|
+              = eval("#{o}_view item , i")
+              
+
+        .card-footer
+          .float-right
+            = link_to "<span class='fa far fa-sync'></span>".html_safe, '#', class: 'btn-flip-flashcard'    
+
+

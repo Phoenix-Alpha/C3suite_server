@@ -1,0 +1,196 @@
+{
+  "resources": [
+    {
+      "name": "Bundles",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get a bundle for a given ID",
+          "link": "bundles/get_a_bundle_for_a_given_id.json",
+          "groups": "all",
+          "route": "api/v1/bundles/:id",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Contents",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Bookmark",
+          "link": "contents/bookmark.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id/bookmark",
+          "method": "get"
+        },
+        {
+          "description": "Build a quiz",
+          "link": "contents/build_a_quiz.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id/build_quiz",
+          "method": "get"
+        },
+        {
+          "description": "Build flashcards",
+          "link": "contents/build_flashcards.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id/build_flashcard",
+          "method": "get"
+        },
+        {
+          "description": "Get a chapter content",
+          "link": "contents/get_a_chapter_content.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id",
+          "method": "get"
+        },
+        {
+          "description": "Get a module content",
+          "link": "contents/get_a_module_content.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id",
+          "method": "get"
+        },
+        {
+          "description": "Get all chapters",
+          "link": "contents/get_all_chapters.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id/chapters",
+          "method": "get"
+        },
+        {
+          "description": "Get all exams",
+          "link": "contents/get_all_exams.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id/exams",
+          "method": "get"
+        },
+        {
+          "description": "Get all questions",
+          "link": "contents/get_all_questions.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id/questions",
+          "method": "get"
+        },
+        {
+          "description": "Get build a flashcard",
+          "link": "contents/get_build_a_flashcard.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id/get_build_flashcard",
+          "method": "get"
+        },
+        {
+          "description": "Get build quizzes",
+          "link": "contents/get_build_quizzes.json",
+          "groups": "all",
+          "route": "api/v1/contents/:id/get_build_quiz",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get all contents for a product",
+          "link": "products/get_all_contents_for_a_product.json",
+          "groups": "all",
+          "route": "api/v1/products/:id/contents",
+          "method": "get"
+        },
+        {
+          "description": "Get all exams",
+          "link": "products/get_all_exams.json",
+          "groups": "all",
+          "route": "api/v1/products/:id/exams",
+          "method": "get"
+        },
+        {
+          "description": "Get all products",
+          "link": "products/get_all_products.json",
+          "groups": "all",
+          "route": "api/v1/products",
+          "method": "get"
+        },
+        {
+          "description": "Get all questions",
+          "link": "products/get_all_questions.json",
+          "groups": "all",
+          "route": "api/v1/products/:id/questions",
+          "method": "get"
+        },
+        {
+          "description": "Get product by ID",
+          "link": "products/get_product_by_id.json",
+          "groups": "all",
+          "route": "api/v1/products/:id",
+          "method": "get"
+        },
+        {
+          "description": "Subscribe product for android",
+          "link": "products/subscribe_product_for_android.json",
+          "groups": "all",
+          "route": "api/v1/products/:id/subscribe",
+          "method": "get"
+        },
+        {
+          "description": "Subscribe product for ios",
+          "link": "products/subscribe_product_for_ios.json",
+          "groups": "all",
+          "route": "api/v1/products/:id/app_store_subscription",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Change User Password",
+          "link": "users/change_user_password.json",
+          "groups": "all",
+          "route": "api/v1/users/change_password",
+          "method": "post"
+        },
+        {
+          "description": "Change user email",
+          "link": "users/change_user_email.json",
+          "groups": "all",
+          "route": "api/v1/users/change_email",
+          "method": "post"
+        },
+        {
+          "description": "Create a user",
+          "link": "users/create_a_user.json",
+          "groups": "all",
+          "route": "api/v1/users",
+          "method": "post"
+        },
+        {
+          "description": "Forgot password",
+          "link": "users/forgot_password.json",
+          "groups": "all",
+          "route": "api/v1/users/forgot_password",
+          "method": "get"
+        },
+        {
+          "description": "Get an auth token",
+          "link": "users/get_an_auth_token.json",
+          "groups": "all",
+          "route": "api/v1/users/token",
+          "method": "post"
+        },
+        {
+          "description": "Reset password",
+          "link": "users/reset_password.json",
+          "groups": "all",
+          "route": "api/v1/users/reset_password",
+          "method": "post"
+        }
+      ]
+    }
+  ]
+}

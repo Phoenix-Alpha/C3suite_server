@@ -1,0 +1,49 @@
+{
+  "resource": "Products",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/products/:id/exams",
+  "description": "Get all exams",
+  "explanation": "Use this endpoint to get all exams for a product ID",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/products/46/exams",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNCwiZXhwIjoxNjAyMTQ5Mzg2fQ.pmOnZLgM0v67zjxy_G7V4_9xZR6cJ04atunGGxetozw",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"exams\": [\n    {\n      \"id\": 346,\n      \"title\": \"title\",\n      \"no_of_attempts\": 3,\n      \"last_attempt\": \"2020-10-07T09:29:46.000Z\",\n      \"attempts\": [\n        {\n          \"questions\": [\n            {\n              \"id\": 81,\n              \"question\": null,\n              \"explanation\": \"Esse et ut sed.\",\n              \"options\": [\n                [\n                  0,\n                  \"Beatae ab quo aperiam.\"\n                ],\n                [\n                  1,\n                  \"Quam dolores voluptatem sit.\"\n                ],\n                [\n                  2,\n                  \"Minima cum perferendis dolor.\"\n                ],\n                [\n                  3,\n                  \"Non qui ipsum qui.\"\n                ]\n              ],\n              \"selected\": 0,\n              \"correct\": \"Beatae ab quo aperiam.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 82,\n              \"question\": null,\n              \"explanation\": \"Quisquam consequatur commodi nulla.\",\n              \"options\": [\n                [\n                  0,\n                  \"Eum magnam minus sequi.\"\n                ],\n                [\n                  1,\n                  \"Veniam vitae ab sit.\"\n                ],\n                [\n                  2,\n                  \"Quo asperiores quo adipisci.\"\n                ],\n                [\n                  3,\n                  \"Delectus officia voluptatem at.\"\n                ]\n              ],\n              \"selected\": 2,\n              \"correct\": \"Eum magnam minus sequi.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 83,\n              \"question\": null,\n              \"explanation\": \"Consequatur error sed quas.\",\n              \"options\": [\n                [\n                  0,\n                  \"Accusantium suscipit quia qui.\"\n                ],\n                [\n                  1,\n                  \"Debitis enim nihil est.\"\n                ],\n                [\n                  2,\n                  \"Dignissimos magni unde modi.\"\n                ],\n                [\n                  3,\n                  \"Eligendi quod illum et.\"\n                ]\n              ],\n              \"selected\": 1,\n              \"correct\": \"Accusantium suscipit quia qui.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            }\n          ],\n          \"no_of_incorrect_questions\": 3,\n          \"no_of_correct_questions\": 0,\n          \"no_of_skipped_questions\": 0\n        },\n        {\n          \"questions\": [\n            {\n              \"id\": 81,\n              \"question\": null,\n              \"explanation\": \"Esse et ut sed.\",\n              \"options\": [\n                [\n                  0,\n                  \"Beatae ab quo aperiam.\"\n                ],\n                [\n                  1,\n                  \"Quam dolores voluptatem sit.\"\n                ],\n                [\n                  2,\n                  \"Minima cum perferendis dolor.\"\n                ],\n                [\n                  3,\n                  \"Non qui ipsum qui.\"\n                ]\n              ],\n              \"selected\": 0,\n              \"correct\": \"Beatae ab quo aperiam.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 82,\n              \"question\": null,\n              \"explanation\": \"Quisquam consequatur commodi nulla.\",\n              \"options\": [\n                [\n                  0,\n                  \"Eum magnam minus sequi.\"\n                ],\n                [\n                  1,\n                  \"Veniam vitae ab sit.\"\n                ],\n                [\n                  2,\n                  \"Quo asperiores quo adipisci.\"\n                ],\n                [\n                  3,\n                  \"Delectus officia voluptatem at.\"\n                ]\n              ],\n              \"selected\": 2,\n              \"correct\": \"Eum magnam minus sequi.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 83,\n              \"question\": null,\n              \"explanation\": \"Consequatur error sed quas.\",\n              \"options\": [\n                [\n                  0,\n                  \"Accusantium suscipit quia qui.\"\n                ],\n                [\n                  1,\n                  \"Debitis enim nihil est.\"\n                ],\n                [\n                  2,\n                  \"Dignissimos magni unde modi.\"\n                ],\n                [\n                  3,\n                  \"Eligendi quod illum et.\"\n                ]\n              ],\n              \"selected\": 1,\n              \"correct\": \"Accusantium suscipit quia qui.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            }\n          ],\n          \"no_of_incorrect_questions\": 3,\n          \"no_of_correct_questions\": 0,\n          \"no_of_skipped_questions\": 0\n        },\n        {\n          \"questions\": [\n            {\n              \"id\": 81,\n              \"question\": null,\n              \"explanation\": \"Esse et ut sed.\",\n              \"options\": [\n                [\n                  0,\n                  \"Beatae ab quo aperiam.\"\n                ],\n                [\n                  1,\n                  \"Quam dolores voluptatem sit.\"\n                ],\n                [\n                  2,\n                  \"Minima cum perferendis dolor.\"\n                ],\n                [\n                  3,\n                  \"Non qui ipsum qui.\"\n                ]\n              ],\n              \"selected\": 0,\n              \"correct\": \"Beatae ab quo aperiam.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 82,\n              \"question\": null,\n              \"explanation\": \"Quisquam consequatur commodi nulla.\",\n              \"options\": [\n                [\n                  0,\n                  \"Eum magnam minus sequi.\"\n                ],\n                [\n                  1,\n                  \"Veniam vitae ab sit.\"\n                ],\n                [\n                  2,\n                  \"Quo asperiores quo adipisci.\"\n                ],\n                [\n                  3,\n                  \"Delectus officia voluptatem at.\"\n                ]\n              ],\n              \"selected\": 2,\n              \"correct\": \"Eum magnam minus sequi.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 83,\n              \"question\": null,\n              \"explanation\": \"Consequatur error sed quas.\",\n              \"options\": [\n                [\n                  0,\n                  \"Accusantium suscipit quia qui.\"\n                ],\n                [\n                  1,\n                  \"Debitis enim nihil est.\"\n                ],\n                [\n                  2,\n                  \"Dignissimos magni unde modi.\"\n                ],\n                [\n                  3,\n                  \"Eligendi quod illum et.\"\n                ]\n              ],\n              \"selected\": 1,\n              \"correct\": \"Accusantium suscipit quia qui.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            }\n          ],\n          \"no_of_incorrect_questions\": 3,\n          \"no_of_correct_questions\": 0,\n          \"no_of_skipped_questions\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"e9c691a884bf15b27062e8e421fc38f2\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "8b5973af-3f02-4efc-96f4-780171c0f28e",
+        "X-Runtime": "0.013800",
+        "Vary": "Origin",
+        "Content-Length": "3157"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

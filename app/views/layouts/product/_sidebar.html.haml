@@ -1,0 +1,20 @@
+#dismiss.pull-right{style: "padding-right: 10px;"}
+  .glyphicon.glyphicon-remove
+
+= image_tag(@product.image('square'), class: 'center-block img-square')
+
+.title.text-center
+  %span.title-text
+    = link_to @product.title, product_path(@product)
+
+- if (current_user && current_user.privileged?) || UserSubscription.subscription_current?(current_user, @product)
+  .modulees
+    - @product.contents.where(actable_type: "Modulee").each do |item|
+      .module{class: ('selected' if item.title == session[:selected])}
+        = link_to item.title, content_path(item)
+        - if item.specific.allow_comprehensive_quizzes or item.specific.configurations[:allow_comprehensive_flashcards].present?
+          %p.module-sublinks
+            - if item.specific.configurations[:allow_comprehensive_quizzes].present? && item.specific.has_quizzes?
+              = link_to 'Comprehensive', comprehensive_instructions_quizzes_path(content_id: item)
+            - if item.specific.configurations[:allow_comprehensive_flashcards].present? && item.specific.has_flashcards?
+              = link_to 'Comprehensive', comprehensive_flashcards_path(content_id: item.id)

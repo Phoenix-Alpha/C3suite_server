@@ -1,0 +1,20 @@
+#quiz-view.col-lg-8.offset-lg-2{ 'data-mode': (@mode if @mode.present?) , 'data-content-id': @content.present? ? @content.id : @quiz.present? ? @quiz.content.id : '' ,'data-quiz-id': (@quiz.present? ? @quiz.id : @content) }
+  .row
+    .col.text-left.h3
+      = @title ? @title : ''
+    .col.text-right
+      - if @startover
+        = link_to "START OVER".html_safe, exam_startover_quiz_path(@quiz.id, mode: (@mode if @mode.present?)), class: "btn btn-sm btn-warning btn-startover align-right", 'data-turbolinks': false
+        
+  = render "question", { quiz: @quiz, questions: @questions, index: @index, modulee: @modulee, bookmarks: @bookmarks }
+
+  .row.px-2
+    .col.text-left
+      - if @skippable
+        = link_to "SKIP".html_safe, "#", class: "btn btn-warning btn-sm skip-question #{ ((@quiz.skippable.present? and @quiz.skippable) or @skippable) ? '' : 'd-none'}", 'data-turbolinks': false
+    .col.text-right
+      = link_to "NEXT<span class='btn-label btn-label-right'><i class='fa fa-arrow-right'></i></span>".html_safe, "#", class: 'btn btn-labeled btn-primary btn-sm next-question d-none', 'data-turbolinks': false
+      - if current_user.present?
+        = link_to "RESULTS<span class='btn-label btn-label-right'><i class='fa fa-arrow-right'></i></span>".html_safe,'#', 'data-link': @result_path, class: "btn btn-labeled btn-primary btn-sm btn-result d-none", 'data-turbolinks': false
+      - else
+        = link_to "FINISH<span class='btn-label btn-label-right'><i class='fa fa-arrow-right'></i></span>".html_safe, content_path(@modulee.content), class: "btn btn-labeled btn-primary btn-sm btn-result d-none", 'data-turbolinks': false

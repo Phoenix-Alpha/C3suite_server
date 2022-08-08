@@ -1,0 +1,49 @@
+{
+  "resource": "Contents",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/contents/:id/exams",
+  "description": "Get all exams",
+  "explanation": "Use this endpoint to get all exams for a module content ID",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/contents/113/exams",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE2MDIxNDkzODN9.DNrjnu59w6Ms-QLALbvp-InWwXPNUyCU_n9TVsApyDM",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"exams\": [\n    {\n      \"id\": 114,\n      \"title\": \"title\",\n      \"no_of_attempts\": 3,\n      \"last_attempt\": \"2020-10-07T09:29:43.000Z\",\n      \"attempts\": [\n        {\n          \"questions\": [\n            {\n              \"id\": 31,\n              \"question\": null,\n              \"explanation\": \"Rerum et in doloremque.\",\n              \"options\": [\n                [\n                  0,\n                  \"Placeat vel odit eveniet.\"\n                ],\n                [\n                  1,\n                  \"Ea ipsam est itaque.\"\n                ],\n                [\n                  2,\n                  \"Fugit qui rem quis.\"\n                ],\n                [\n                  3,\n                  \"Incidunt doloribus excepturi non.\"\n                ]\n              ],\n              \"selected\": 3,\n              \"correct\": \"Placeat vel odit eveniet.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 32,\n              \"question\": null,\n              \"explanation\": \"Recusandae distinctio iste tenetur.\",\n              \"options\": [\n                [\n                  0,\n                  \"Aspernatur labore vitae sed.\"\n                ],\n                [\n                  1,\n                  \"Eveniet laborum dicta voluptatem.\"\n                ],\n                [\n                  2,\n                  \"Officiis illum laboriosam tenetur.\"\n                ],\n                [\n                  3,\n                  \"Quae a et quia.\"\n                ]\n              ],\n              \"selected\": 1,\n              \"correct\": \"Aspernatur labore vitae sed.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 33,\n              \"question\": null,\n              \"explanation\": \"Consequatur rerum cupiditate corporis.\",\n              \"options\": [\n                [\n                  0,\n                  \"Autem minus aspernatur consequatur.\"\n                ],\n                [\n                  1,\n                  \"Dolorum beatae fugit a.\"\n                ],\n                [\n                  2,\n                  \"Accusamus sunt doloremque molestias.\"\n                ],\n                [\n                  3,\n                  \"Ipsam rerum optio placeat.\"\n                ]\n              ],\n              \"selected\": 0,\n              \"correct\": \"Autem minus aspernatur consequatur.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            }\n          ],\n          \"no_of_incorrect_questions\": 3,\n          \"no_of_correct_questions\": 0,\n          \"no_of_skipped_questions\": 0\n        },\n        {\n          \"questions\": [\n            {\n              \"id\": 31,\n              \"question\": null,\n              \"explanation\": \"Rerum et in doloremque.\",\n              \"options\": [\n                [\n                  0,\n                  \"Placeat vel odit eveniet.\"\n                ],\n                [\n                  1,\n                  \"Ea ipsam est itaque.\"\n                ],\n                [\n                  2,\n                  \"Fugit qui rem quis.\"\n                ],\n                [\n                  3,\n                  \"Incidunt doloribus excepturi non.\"\n                ]\n              ],\n              \"selected\": 3,\n              \"correct\": \"Placeat vel odit eveniet.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 32,\n              \"question\": null,\n              \"explanation\": \"Recusandae distinctio iste tenetur.\",\n              \"options\": [\n                [\n                  0,\n                  \"Aspernatur labore vitae sed.\"\n                ],\n                [\n                  1,\n                  \"Eveniet laborum dicta voluptatem.\"\n                ],\n                [\n                  2,\n                  \"Officiis illum laboriosam tenetur.\"\n                ],\n                [\n                  3,\n                  \"Quae a et quia.\"\n                ]\n              ],\n              \"selected\": 1,\n              \"correct\": \"Aspernatur labore vitae sed.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 33,\n              \"question\": null,\n              \"explanation\": \"Consequatur rerum cupiditate corporis.\",\n              \"options\": [\n                [\n                  0,\n                  \"Autem minus aspernatur consequatur.\"\n                ],\n                [\n                  1,\n                  \"Dolorum beatae fugit a.\"\n                ],\n                [\n                  2,\n                  \"Accusamus sunt doloremque molestias.\"\n                ],\n                [\n                  3,\n                  \"Ipsam rerum optio placeat.\"\n                ]\n              ],\n              \"selected\": 0,\n              \"correct\": \"Autem minus aspernatur consequatur.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            }\n          ],\n          \"no_of_incorrect_questions\": 3,\n          \"no_of_correct_questions\": 0,\n          \"no_of_skipped_questions\": 0\n        },\n        {\n          \"questions\": [\n            {\n              \"id\": 31,\n              \"question\": null,\n              \"explanation\": \"Rerum et in doloremque.\",\n              \"options\": [\n                [\n                  0,\n                  \"Placeat vel odit eveniet.\"\n                ],\n                [\n                  1,\n                  \"Ea ipsam est itaque.\"\n                ],\n                [\n                  2,\n                  \"Fugit qui rem quis.\"\n                ],\n                [\n                  3,\n                  \"Incidunt doloribus excepturi non.\"\n                ]\n              ],\n              \"selected\": 3,\n              \"correct\": \"Placeat vel odit eveniet.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 32,\n              \"question\": null,\n              \"explanation\": \"Recusandae distinctio iste tenetur.\",\n              \"options\": [\n                [\n                  0,\n                  \"Aspernatur labore vitae sed.\"\n                ],\n                [\n                  1,\n                  \"Eveniet laborum dicta voluptatem.\"\n                ],\n                [\n                  2,\n                  \"Officiis illum laboriosam tenetur.\"\n                ],\n                [\n                  3,\n                  \"Quae a et quia.\"\n                ]\n              ],\n              \"selected\": 1,\n              \"correct\": \"Aspernatur labore vitae sed.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            },\n            {\n              \"id\": 33,\n              \"question\": null,\n              \"explanation\": \"Consequatur rerum cupiditate corporis.\",\n              \"options\": [\n                [\n                  0,\n                  \"Autem minus aspernatur consequatur.\"\n                ],\n                [\n                  1,\n                  \"Dolorum beatae fugit a.\"\n                ],\n                [\n                  2,\n                  \"Accusamus sunt doloremque molestias.\"\n                ],\n                [\n                  3,\n                  \"Ipsam rerum optio placeat.\"\n                ]\n              ],\n              \"selected\": 0,\n              \"correct\": \"Autem minus aspernatur consequatur.\",\n              \"status\": \"Incorrect\",\n              \"is_bookmarked\": true\n            }\n          ],\n          \"no_of_incorrect_questions\": 3,\n          \"no_of_correct_questions\": 0,\n          \"no_of_skipped_questions\": 0\n        }\n      ]\n    }\n  ]\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"437d2aba9b37a11151d889fe07d49796\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "85ed79dc-4302-48bf-b495-49faba8da514",
+        "X-Runtime": "0.015438",
+        "Vary": "Origin",
+        "Content-Length": "3325"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+= form_for [:manage, @product, @quiz], html: { class: 'form-horizontal' }  do |f|
+  .card.card-default
+    .card-header
+    .card-body
+      = errors_for(@quiz)
+
+      = f.hidden_field :product_id, value: @product.id
+      = f.hidden_field :parent_id, value: @content.id if @content.present?
+
+      .form-group
+        %label= f.label :title
+        = f.text_field :title, class: 'form-control'
+
+      .form-group
+        %label= f.label 'Description'
+        = f.text_area :description, class: 'form-control tinymce'
+        = tinymce
+
+      .form-group
+        %label= f.label 'Passing Percentage'
+        = f.number_field :passing_percentage, class: 'form-control', :max => 100, :min => 0
+
+      .form-group
+        %label Time Limit (in seconds)
+        .input-group
+          .input-group-prepend
+            .input-group-text
+              = check_box_tag :set_time_limit, '', @quiz.time_limit ? true : false
+          = f.number_field :time_limit, class: 'form-control', step: 10, readonly: @quiz.time_limit ? false : true
+
+      
+      .form-group#inherit-modulee-settings
+        %p Inherit Module Configurations
+        %label.switch.switch-md
+          = f.check_box :inherit_modulee_configs, checked: (@quiz.inherit_modulee_configs ? true : false)
+          %span
+
+      .quiz-settings{ class: @quiz.inherit_modulee_configs ? 'd-none' : '' }
+        %label.h4 User can:
+
+        .form-group  
+          %p Skippable - Allow user to skip questions (unanswered) in exam mode quizzes
+          %label.switch.switch-mdmodu
+            = f.check_box :skippable
+            %span
+
+        .form-group
+          %p View Previous Question (Study Mode only)
+          %label.switch.switch-md
+            = f.check_box :back_navigation
+            %span
+
+        .form-group
+          %p Shuffle - Shuffeled questions and flashcard items for each chapter.
+          %label.switch.switch-md
+            = f.check_box :shuffle
+            %span
+
+        .form-group
+          %p Allow Startover - User could startover the current progress for quizzes or flashcards
+          %label.switch.switch-md
+            = f.check_box :start_over
+            %span
+
+  %h4.page-header Questions
+  .row#accordion
+    = f.fields_for :questions do |question|
+      = render 'question_fields', f: question
+
+    .form-group.links.col-md-12
+      = link_to_add_association 'New Question', f, :questions, class: 'btn btn-success btn-sm'
+  .row
+    .col-md-12
+      %hr
+        = f.submit class: 'btn btn-sm btn-primary'
+%br
+
+- if @quiz.actable_id.present?
+  .row
+    .col-md-3
+      .h4
+        Download CSV
+      %p
+        = link_to 'Download', manage_product_quiz_download_path(@product, @quiz.actable_id, format: :csv),class: 'btn btn-info btn-sm'
+
+%br
+%br

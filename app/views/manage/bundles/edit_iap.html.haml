@@ -1,0 +1,31 @@
+.content-heading
+	Edit #{@bundle.title}
+
+.card.card-default
+	= form_with url: manage_bundle_update_iap_path(@bundle), method: 'put', local: true, id: 'iap-form' do |f|
+		.card-header.h4.mt-3 #{@iap.present? ? @iap.application.name : nil} - Edit In-App Pruchase
+		.card-body
+			.col-6
+				.form-group
+					= f.label 'Reference Name', class: 'control-label'
+					= f.text_field :reference_name, class: 'form-control', required: true, value: (@iap.reference_name if @iap.present?)
+				
+				.form-group
+					= f.label 'Product id', class: 'control-label'
+					= f.text_field :iap_id, class: 'form-control', id: 'text_field_title', required: true, value: (@iap.product_id if @iap.present?), readonly: true
+				
+				-# .form-group
+				-# 	= f.label :description, class: 'control-label'
+				-# 	= f.text_field :description, class: 'form-control'
+				
+				.form-group
+					%p Cleared for sale
+					%label.switch.switch-md
+						= f.check_box :cleared_for_sale, checked: (@iap.cleared_for_sale if @iap.present?)
+						%span
+				
+				.form-group
+					= f.label :price, class: 'control-label'
+					= f.select :price, options_for_select(iap_price_tier, (@iap.pricing_intervals.first[:tier] - 0.01 if @iap.pricing_intervals.present?)),{ include_blank: false }, { class: 'chosen-select form-control', 'data-placeholder': 'Price Tier' }
+
+				= f.submit "Update", class: 'btn btn-primary btn-sm' 

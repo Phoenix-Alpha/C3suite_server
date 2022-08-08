@@ -1,0 +1,7 @@
+- case content.actable_type
+  - when 'Modulee'
+    .content-image-container
+      = image_tag(content.image('square'), class: 'img-responsive img-rounded img-content')
+      .content-image-button
+        .btn.btn-lg.btn-default
+          = link_to content.title.truncate(12), content_path(content)

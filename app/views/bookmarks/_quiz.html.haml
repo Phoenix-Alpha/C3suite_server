@@ -1,0 +1,31 @@
+%h2
+  @quiz.title
+
+#quiz-view.col-md-8.col-sm-12.col-md-offset-2
+  .row
+    .col-md-12
+      - @questions.each_with_index do |q, index|
+        - k = 1
+        - opts = [q.correct]
+
+        - while (k < 10 && distractor = q.send("distractor#{k}"))
+          - if distractor.present?
+            - opts.push(distractor)
+          - k += 1
+        - opts = opts.shuffle unless opts.empty?
+
+        = link_to "<span class='glyphicon glyphicon-heart'></span>".html_safe, '#', class: "btn btn-sm btn-default btn-bkmark-quiz #{'bookmarked' if @bookmarks.include?(q.id)} #{'hidden' unless index == 0}", 'data-question_id': "#{q.id}" if @modulee.present? && @modulee.configurations[:has_bookmarks].present?
+
+        .question.well{ class: ('hidden' unless index == 0), "data-explanation": q.explanation }
+          .col-md-12
+            %h4
+              = q.question
+              %br
+              %br
+
+          .col-md-12.distractors
+            - opts.each_with_index do |opt, index|
+              = radio_button('answers', 'distractor', opt, "data-value": opt === q.correct ? true : false)
+              %span
+                = opt
+              %br

@@ -1,0 +1,63 @@
+
+<p>
+  <strong>Product:</strong>
+  <%= @content.product_id %>
+</p>
+
+<p>
+  <strong>Module Name:</strong>
+  <%= @content.title %>
+</p>
+<p>
+  <strong>Kind:</strong>
+  <%= @content.actable_type %>
+</p>
+<br>
+
+<%= form_for @content, url: manage_content_path(@content), html: { method: :put } do |f| %>
+  <% if content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(content.errors.count, "error") %> prohibited this content from being saved:</h2>
+
+      <ul>
+      <% content.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- <div class="field">
+    <%#= f.label :product_id %> :  <%#= @product.title %>
+    <%#= f.number_field :product_id %>
+  </div> -->
+<!--
+  <div class="field">
+    <%#= f.label :follows %>
+    <%#= f.number_field :follows %>
+  </div> -->
+<!--
+  <div class="field">
+    <%#= f.label :parent %> :
+   <%#= f.number_field :parent %>
+  </div> -->
+
+  <!-- <div class="field">
+    <%#= f.label :actable_type %>
+    <%#= f.text_field :actable_type %>
+  </div> -->
+
+  <!-- <div class="field">
+    <%#= f.label :payload %>
+    <%#= f.text_area :payload %>
+  </div> -->
+
+  <div class="form-group">
+    <%= f.label :time %>
+    <%= f.number_field :time, min: 0, max: 100, class: 'form-control col-md-6' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-sm btn-success'%>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+// Place all the styles related to the bookmarks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.row.bkm-nav-margin {
+  margin: 0px -46px; 
+}
+
+ul.nav.nav-pills {
+  border: 1px solid #ccc;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+#bookmarks .list-group > .list-group-item {
+  span.fa-heart:hover {
+    font-weight: 400;
+  }
+}

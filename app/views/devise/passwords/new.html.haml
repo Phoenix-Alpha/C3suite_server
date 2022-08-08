@@ -1,0 +1,20 @@
+.block-center.mt-4.wd-xl
+  .card.card-flat
+    .card-header.text-center.bg-dark
+      %a{href: "/"}
+        C3Suite
+    .card-body
+      %p.text-center.py-2 PASSWORD RESET
+
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = devise_error_messages!
+        %p.text-center Fill with your email to receive instructions on how to reset your password.
+        .field
+          = f.label :email
+          = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Enter email', autocomplete: 'off', required: true
+        .actions
+          = f.submit "Reset", class: 'btn btn-block btn-primary mt-3'
+      .mt-3
+        = render "devise/shared/links"
+
+  = render 'layouts/partials/footer'

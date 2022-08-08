@@ -1,0 +1,49 @@
+{
+  "resource": "Contents",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/contents/:id/questions",
+  "description": "Get all questions",
+  "explanation": "Use this endpoint to get all questions for a module content ID",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/contents/137/questions",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2MDIxNDkzODN9.LpHKhimdbqRbCSkgcX_dJjcwNcMX4ZeSuap7x-NeprQ",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"questions\": [\n    {\n      \"id\": 41,\n      \"hint\": \"Cupiditate et et vel.\",\n      \"explanation\": \"Blanditiis deleniti facere nihil.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Dolorum quaerat in reiciendis.\",\n      \"distractor1\": \"Dignissimos cupiditate dolorum voluptas.\",\n      \"distractor2\": \"Ea enim ratione perspiciatis.\",\n      \"distractor3\": \"Accusamus sit molestiae in.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 42,\n      \"hint\": \"Possimus a aut veniam.\",\n      \"explanation\": \"Vitae officia accusantium numquam.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Laboriosam iusto in ut.\",\n      \"distractor1\": \"Numquam facilis et minima.\",\n      \"distractor2\": \"Voluptatem dolore saepe laboriosam.\",\n      \"distractor3\": \"Reprehenderit et corrupti adipisci.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 43,\n      \"hint\": \"Totam repudiandae suscipit animi.\",\n      \"explanation\": \"Ea repellendus debitis velit.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Et optio eius doloremque.\",\n      \"distractor1\": \"Quis aut ut nam.\",\n      \"distractor2\": \"Aut dolorum magni reprehenderit.\",\n      \"distractor3\": \"Aut incidunt ea dolorum.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 44,\n      \"hint\": \"Quasi sed veniam minus.\",\n      \"explanation\": \"Cumque velit nihil deleniti.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Molestiae reprehenderit quam aut.\",\n      \"distractor1\": \"Officiis similique maxime corrupti.\",\n      \"distractor2\": \"Nulla et maxime et.\",\n      \"distractor3\": \"Aut debitis rem et.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 45,\n      \"hint\": \"Animi voluptas deleniti quisquam.\",\n      \"explanation\": \"Vero ut est molestiae.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Sit ea illo non.\",\n      \"distractor1\": \"Vel praesentium repellendus eos.\",\n      \"distractor2\": \"Et facere nulla corrupti.\",\n      \"distractor3\": \"Et eos ut non.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 46,\n      \"hint\": \"At esse qui quo.\",\n      \"explanation\": \"Quis consequuntur ut voluptas.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Voluptatem fugit praesentium illo.\",\n      \"distractor1\": \"Qui consequatur distinctio ab.\",\n      \"distractor2\": \"Non impedit odio dolorem.\",\n      \"distractor3\": \"Magnam molestiae voluptatem ex.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 47,\n      \"hint\": \"Perferendis a id sapiente.\",\n      \"explanation\": \"Harum blanditiis nihil ut.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Sapiente nisi fugit sed.\",\n      \"distractor1\": \"Suscipit vitae in unde.\",\n      \"distractor2\": \"Quasi aut ut id.\",\n      \"distractor3\": \"Ut quod qui minima.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 48,\n      \"hint\": \"Eum dolorem et cumque.\",\n      \"explanation\": \"Quia ex est distinctio.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Vitae non alias vero.\",\n      \"distractor1\": \"Expedita sequi eos et.\",\n      \"distractor2\": \"Ut sed nesciunt natus.\",\n      \"distractor3\": \"Distinctio laudantium pariatur voluptas.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 49,\n      \"hint\": \"Voluptas molestiae aliquid aut.\",\n      \"explanation\": \"Numquam est sit possimus.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Aliquid quam repellendus consequatur.\",\n      \"distractor1\": \"Maxime asperiores veritatis vero.\",\n      \"distractor2\": \"Laboriosam quam facilis perspiciatis.\",\n      \"distractor3\": \"Aut et ratione ut.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    },\n    {\n      \"id\": 50,\n      \"hint\": \"Qui alias illo repellat.\",\n      \"explanation\": \"Non eos placeat iste.\",\n      \"quiz_id\": 5,\n      \"question\": null,\n      \"correct\": \"Esse eligendi autem facilis.\",\n      \"distractor1\": \"Porro eveniet aspernatur ut.\",\n      \"distractor2\": \"Quis qui consequuntur exercitationem.\",\n      \"distractor3\": \"Atque blanditiis optio repellat.\",\n      \"distractor4\": null,\n      \"distractor5\": null,\n      \"distractor6\": null,\n      \"distractor7\": null,\n      \"distractor8\": null,\n      \"distractor9\": null,\n      \"category\": null\n    }\n  ]\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"e6388effb845eb73596932c12085f8cb\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "0fc9b26c-fd8c-4f9d-b9c9-7ecd047837ce",
+        "X-Runtime": "0.006774",
+        "Vary": "Origin",
+        "Content-Length": "4234"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

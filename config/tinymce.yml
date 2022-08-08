@@ -1,0 +1,24 @@
+toolbar:
+  - styleselect | bold italic | undo redo
+  - image | link
+plugins:
+  - code
+  - image
+  - link
+allow_script_urls: true
+valid_elements:
+  - div[class|id|style]
+  - html
+  - body
+  - head
+  - meta
+  - title
+  - script
+  - style
+  - img[src|alt|class|id|style]
+  - b/strong[class|id|style]
+  - a[href|class|id|style]
+  - ul[class|id|style]
+  - li[class|id|style]
+  - br
+  - hr

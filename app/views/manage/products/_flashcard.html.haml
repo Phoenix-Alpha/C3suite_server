@@ -1,0 +1,16 @@
+.card.card-default
+  .card-header
+    - if can? :read, flashcard
+      = link_to flashcard.title, manage_product_flashcard_path(@product, flashcard.actable_id), 'data-turbolinks': false
+    - else
+      = flashcard.title
+
+    = render '/manage/partials/user_actions', { product: @product, content: flashcard }
+
+  .card-body
+    %span.help-block
+      = flashcard.specific.description if flashcard.specific.description.present?
+  .card-footer.bg-light    
+    %strong
+      Flashcard Items:
+      = flashcard.specific.flashcard_items.count

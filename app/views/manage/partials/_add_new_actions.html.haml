@@ -1,0 +1,26 @@
+.btn-group.ml-2 
+  %a.dropdown-toggle.dropdown-toggle-caret{ "data-toggle": "dropdown", href: "#flashcard", class: 'btn btn-secondary btn-xs' }
+    Flashcard
+  .dropdown-menu.dropdown-menu-left.animated.fadeIn  
+    = link_to 'New Flashcard', new_manage_product_flashcard_path(product, content_id: object.id), 'data-turbolinks': false, class: 'dropdown-item'
+    = link_to 'Upload Flashcard File', upload_manage_product_flashcards_path(product, content_id: object.id), class: 'dropdown-item'
+
+.btn-group  
+  %a.dropdown-toggle.dropdown-toggle-caret{ "data-toggle": "dropdown", href: "#flashcard", class: 'btn btn-secondary btn-xs' }
+    HTML
+  .dropdown-menu.dropdown-menu-left.animated.fadeIn  
+    = link_to 'New HTML', new_manage_product_html_path(product, content_id: object.id), 'data-turbolinks': false, class: 'dropdown-item'
+    = link_to 'Upload HTML File', upload_manage_product_htmls_path(product, content_id: object.id), class: 'dropdown-item'
+
+.btn-group  
+  %a.dropdown-toggle.dropdown-toggle-caret{ "data-toggle": "dropdown", href: "#quiz", class: 'btn btn-secondary btn-xs' }
+    Quiz
+  .dropdown-menu.dropdown-menu-left.animated.fadeIn  
+    = link_to 'New Quiz', new_manage_product_quiz_path(product, content_id: object.id), class: 'dropdown-item'
+    = link_to 'Upload Quiz File', upload_manage_product_quizzes_path(product, content_id: object.id), class: 'dropdown-item' 
+
+.btn.btn-secondary.btn-xs
+  = link_to 'Media', new_manage_product_media_path(product, content_id: object.id)
+-if type == "module"
+  .btn.btn-secondary.btn-xs
+    = link_to('Sub Module', new_manage_product_submodule_path(product, content_id: object.id))

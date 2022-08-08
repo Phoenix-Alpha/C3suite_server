@@ -1,0 +1,13 @@
+#media-templates.col-lg-8.offset-lg-2.col-md-8.offset-md-2.col-sm-12.col-xs-12
+  %h2
+    = media.caption
+
+  .card.card-default
+    .card-body
+      - if media.present?
+        - if media.local_type == 'Video'
+          = video_tag media.source_url, controls: true, size: '300x200', class: 'video-tag'
+        - elsif media.local_type == 'Audio'
+          = audio_tag media.source_url, controls: true, class: 'audio-tag'
+        - else
+          = image_tag media.source_url, class: 'img-thumbnail'

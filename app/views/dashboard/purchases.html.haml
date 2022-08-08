@@ -1,0 +1,25 @@
+.h3 Purchases
+
+- if @charges.present?
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th Purchase
+        %th Price
+        %th Purchase Date
+    %tbody
+      - @charges.each do |charge|
+        - if charge.paid
+          %tr 
+            %td
+              = charge.description
+            %td
+              = "$#{(charge.amount || 0) / 100} USD"
+            %td
+              = to_formatted_date charge.created
+- else
+  %p.well
+    No purchase history exist
+
+%br
+= link_to 'Back', dashboard_path, class: 'btn btn-sm btn-primary'

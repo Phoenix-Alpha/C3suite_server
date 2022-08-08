@@ -1,0 +1,10 @@
+.h3
+  Tag Details
+%p
+  %strong
+    Name:
+  = @tag.name
+  %br
+  %br
+  = link_to 'Edit', edit_manage_tag_path(@tag), class: 'btn btn-sm btn-primary'
+  = link_to 'Back', manage_tags_path, class: 'btn btn-sm btn-primary'

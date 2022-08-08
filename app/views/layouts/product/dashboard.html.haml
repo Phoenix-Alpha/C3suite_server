@@ -1,0 +1,46 @@
+!!!
+%html
+  %head
+    %title C3Suite
+    = include_gon
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag 'base'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    = javascript_include_tag 'base'
+    = yield :vendor_js_area
+    = javascript_include_tag 'application'
+    = yield :body_area
+
+  %body.layout
+    -is_subscriber = (current_user.present? and UserSubscription.subscription_current?(current_user, @product))
+    .wrapper{ style: "background: #{show_background @product}; background-repeat: no-repeat; background-position: center;" }
+      - unless devise_actions
+        %header.topnavbar-wrapper
+          = render 'layouts/navbar'
+        - if is_subscriber
+          %aside.aside-container
+            = render partial: "layouts/sidebar"
+      %section{ class: is_subscriber ? 'section-container' : '' } 
+        .content-wrapper
+          - if current_user.present?
+            - flash.each do |key, value|
+              %div{ class: flash_class(key) }
+                %button.close{ "aria-label": "Close", "data-dismiss": "alert", type: "button" }
+                  %span{"aria-hidden" => "true"}
+                    &times
+                %strong
+                  = value
+            .content-heading.p-1.border-bottom-0
+              %div{ class: !is_subscriber ? 'container' : '' }
+                .breadcrumb{ class: !is_subscriber ? 'pl-0' : '' }
+                  .breadcrumb-item
+                    = render_breadcrumbs builder: ::BootstrapBreadcrumbsBuilder, separator: ' / '
+          
+          = yield
+      - if current_user.present?
+        %footer.footer-container
+          = render partial: "layouts/partials/footer"
+          
+  = javascript_packs_with_chunks_tag 'application', 'forms'

@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    %title C3Suite
+    = include_gon
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+
+    = stylesheet_link_tag 'base'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    = javascript_include_tag 'base'
+    = yield :vendor_js_area
+    = javascript_include_tag 'application'
+    = yield :body_area
+
+  %body.layout
+    .wrapper
+      - unless devise_actions
+        %header.topnavbar-wrapper
+          = render 'layouts/navbar'
+        - if (current_user.present? and !controller?('bundles'))
+          %aside.aside-container
+            = render partial: "layouts/sidebar"
+      %section{ class: (current_user.present? and !controller?('bundles')) ? 'section-container' : '' }
+        - flash.each do |key, value|
+          %div{ class: flash_class(key) }
+            %button.close{ "aria-label": "Close", "data-dismiss": "alert", type: "button" }
+              %span{"aria-hidden" => "true"}
+                &times
+            %strong
+              = value
+
+        .content-wrapper
+          = yield
+      - if current_user.present?
+        %footer.footer-container
+          = render partial: "layouts/partials/footer"
+      
+  = javascript_packs_with_chunks_tag 'application', 'forms'

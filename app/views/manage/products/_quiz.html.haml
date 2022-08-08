@@ -1,0 +1,15 @@
+.card.card-default
+  .card-header
+    .card-title
+      = quiz.title
+      = render '/manage/partials/user_actions', { product: @product, content: quiz }
+
+  .card-body
+    %span.help-block
+      = quiz.specific.description.html_safe if quiz.specific.description.present?
+  .card-footer.bg-light  
+    %strong Questions:
+    = quiz.specific.questions.count
+    %br
+    %strong Time:
+    = quiz.specific.time_limit.present? ? "#{quiz.specific.time_limit}s" : "N/A"

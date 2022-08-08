@@ -1,0 +1,112 @@
+.content-heading
+  #{@product.title}
+
+-if @app.blank?
+  .text-center.mt-3.h5.text-warning No App Store Application Found.
+  %hr
+
+  = form_with url: manage_product_create_app_path(@product), method: 'post', local: true, id: 'iap-form' do |f|
+    .card.card-default
+      .card-header.h4
+        Create App Store Application
+      .card-body
+        .col-6
+          .form-group
+            = f.label 'App Name', class: 'control-label'
+            = f.text_field :app_name, class: 'form-control', required: true
+          
+          .form-group
+            = f.label :subtitle, class: 'control-label'
+            = f.text_field :subtitle, class: 'form-control', placeholder: 'Optional'
+          
+          .form-group
+            = f.label 'Application bundle id', class: 'control-label'
+            = f.text_field :app_store_bundle_id, class: 'form-control', required: true
+          
+          .form-group
+            = f.label 'SKU (A unique ID for your app that is not visible on the App Store.)', class: 'control-label'
+            = f.text_field :sku, class: 'form-control', required: true
+          
+          .form-group
+            = f.label 'Application Version', class: 'control-label'
+            = f.text_field :version, class: 'form-control'
+
+          = f.submit "Create", class: 'btn btn-primary btn-sm'
+-else
+  .card.card-default
+    .card-header.h4 App Store Application
+    .card-body
+      %dl.col-md-6.col-sm-6.col-lg-6
+        .row
+          %dt.col-sm-4 App Name
+          %dd.col-sm-8
+            = @app[:name]
+        .row
+          %dt.col-sm-4 Bundle Id
+          %dd.col-sm-8
+            = @app[:bundle_id]
+        .row
+          %dt.col-sm-4 SKU
+          %dd.col-sm-8
+            = @app[:vendor_id]
+
+        
+  .card.card-default
+    - iaps = @app[:iaps] 
+    -if iaps.present?
+      .card-body
+        .table-responsive
+          %table.table.table-striped.table-hover
+            %thead
+              %tr
+                %th Reference Name
+                %th Product Id
+                %th 
+            %tbody
+              - iaps.each do |iap|
+                %tr
+                  %td= iap[:reference_name]
+                  %td= iap[:product_id]
+                  %td
+                    .btn-group
+                      = link_to ' Edit ', manage_product_edit_iap_path(@product, iap_id: iap[:product_id]), class: 'btn btn-xs btn-info', 'data-turbolinks': false
+                      = link_to 'Delete', manage_product_delete_iap_path(@product, iap_id: iap[:product_id]), method: :delete, data: { confirm: 'Are you sure to perform this action?' }, class: 'btn btn-xs btn-danger'
+                      
+
+
+    -else
+      .text-center.mt-3.h5.text-warning No In-App Purchases Found.
+    
+    %hr
+    = form_with url: manage_product_create_iap_path(@product), method: 'post', local: true, id: 'iap-form' do |f|
+      .card-header.h4.mt-3
+        Create Subscription
+      .card-body
+        .col-6
+          .form-group
+            = f.label 'Reference Name', class: 'control-label'
+            = f.text_field :reference_name, class: 'form-control', required: true
+          
+          .form-group
+            = f.label 'Product id', class: 'control-label'
+            = f.text_field :iap_id, class: 'form-control', id: 'text_field_title', required: true
+          
+          -# .form-group
+          -#   = f.label 'In-App purchase type', class: 'control-label'
+          -#   = f.select :type, options_for_select(iap_types), { include_blank: false }, { class: 'chosen-select form-control', 'data-placeholder': 'In-App Purchase type' }
+
+          .form-group
+            = f.label :description, class: 'control-label'
+            = f.text_field :description, class: 'form-control', required: true
+          
+          .form-group
+            %p Cleared for sale
+            %label.switch.switch-md
+              = f.check_box :cleared_for_sale
+              %span
+          
+          .form-group
+            = f.label :price, class: 'control-label'
+            = f.select :price, options_for_select(iap_price_tier), { include_blank: false }, { class: 'chosen-select form-control', 'data-placeholder': 'Price Tier' }
+
+          = f.submit "Create", class: 'btn btn-primary btn-sm' 

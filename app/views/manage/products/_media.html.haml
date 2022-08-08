@@ -1,0 +1,22 @@
+.card.card-default
+  .card-header
+    - if can? :read, media
+      = link_to media.title, manage_product_media_path(@product, media.actable_id)
+    - else
+      = media.title
+
+    = render '/manage/partials/user_actions', { product: @product, content: media }
+
+  .card-body
+    - if media.specific.present?
+      - if media.specific.source_data.present?
+        - if media.specific.local_type == 'Image'
+          = image_tag url_for(media.specific.source_url), class: 'img-thumbnail'
+        - elsif media.specific.local_type == 'Audio'
+          = audio_tag url_for(media.specific.source_url), controls: true
+        - elsif media.specific.local_type == 'Video'
+          = video_tag url_for(media.specific.source_url), controls: true
+
+      / .embed-responsive.embed-responsive-4by3
+      /  - if media.specific.source.attached?
+      /    %iframe{ src: media.specific.source_blob, class: 'embed-responsive-item' }

@@ -1,0 +1,44 @@
+.card.b
+  .card-header
+    %h4
+      = media_block.title
+    .badge.badge-info.content-type-badge
+      Media
+  .card-body.pt-0
+    .row.mt-4
+      .col-md-4
+        -if media_block.specific.local_type == "Video"
+          /TODO: Video thumbmail
+          /= image_tag(media.specific.source.preview(resize: "80x80"), class: 'rounded')
+          %span.text-center
+            %em.fa.fa-play-circle.fa-4x.m-4
+        -elsif media_block.specific.local_type == "Image"
+          = image_tag(media_block.specific.source_url, class: 'img-fluid rounded img-block')
+        -elsif media_block.specific.local_type == "Audio"
+          %span.text-center
+            %em.icon-earphones.fa-4x
+      .col-md-8
+        -if media_block.specific.local_type == "Video" or media_block.specific.local_type == "Audio"
+          - description = media_block.specific.transcript.present? ? media_block.specific.transcript.truncate(100).html_safe : '--'
+          = raw truncate(strip_tags(description), length: 350, omission: '... ')
+        -elsif media_block.specific.local_type == "Image"
+          = media_block.specific.caption
+      - if current_user.present?
+        %table.table
+          %tbody
+            %tr
+              %td
+                %strong
+                  Status
+              %td
+                = construct_string media_block
+            %tr
+              %td
+                %strong
+                  Last Active
+              %td
+                = last_active media_block
+
+
+  .card-footer.p-1.bg-gray
+    = link_to 'Start', media_path(media_block.actable_id), class: 'btn btn-large btn-secondary',  "data-turbolinks": 'false'

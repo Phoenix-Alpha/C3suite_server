@@ -1,0 +1,34 @@
+.content-heading
+  Tags
+
+  .ml-auto
+    = link_to 'New Tag', new_manage_tag_path, class: 'btn btn-sm btn-success'
+
+- if @tags.present?
+  .card.card-default
+    .card-body
+      .table-responsive
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %th Tag Name
+              %th
+          %tbody
+            - @tags.each do |tag|
+              %tr
+                %td
+                  = link_to tag.name, manage_contents_path('q[title_or_actable_type_cont]': tag.name), class: 'btn-link'
+                %td
+                  .btn-group
+                    %button.btn.btn-secondary{ type: 'button' } Action
+                    %button.btn.dropdown-toggle.btn-secondary{ 'data-toggle': 'dropdown', type: 'button' }
+                    .dropdown-menu.dropdown-menu-right{ role: 'menu' }
+                      = link_to 'View', manage_tag_path(tag), class: 'dropdown-item' if can? :read, tag
+                      = link_to 'Edit', edit_manage_tag_path(tag), class: 'dropdown-item' if can? :update, Tag
+                      = link_to 'Delete', manage_tag_path(tag), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' if can? :destroy, Tag
+- else
+  %p.well
+    No records found.
+
+= link_to 'Back', dashboard_path, class: 'btn btn-sm btn-secondary'
+= link_to 'New Tag', new_manage_tag_path, class: 'btn btn-sm btn-success'

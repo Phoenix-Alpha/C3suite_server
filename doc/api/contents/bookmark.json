@@ -1,0 +1,62 @@
+{
+  "resource": "Contents",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/contents/:id/bookmark",
+  "description": "Bookmark",
+  "explanation": "Use this endpoint to bookmark or unbookmark flashcard item or question aginst chapter id and question/flahscard id. Returns the updated array of ids of bookmarked items",
+  "parameters": [
+    {
+      "name": "content_type_id",
+      "description": "The id of question or flashcard item"
+    },
+    {
+      "name": "content_type",
+      "description": "The type for the item i.e 'Question' or 'FlashcardItem' "
+    },
+    {
+      "name": "destroy",
+      "description": "(Optional) If true, the request will consider for unbookmark. If not given, the request will consider for bookmark the item"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/contents/258/bookmark?content_type_id=71&content_type=Question",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMSwiZXhwIjoxNjAyMTQ5Mzg1fQ.Es0kHsZu7RJHsBKuOTT5piivSlv5O1L3WMn8-Ra-OEE",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "content_type_id": "71",
+        "content_type": "Question"
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"content_type_ids\": [\n    71,\n    72,\n    73\n  ],\n  \"actable_type\": \"Quiz\"\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"417252fdb13623a045504890b7a5ed4c\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "fabb8475-53a0-470e-8bee-0d0e5e1d9fdf",
+        "X-Runtime": "0.004367",
+        "Vary": "Origin",
+        "Content-Length": "68"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

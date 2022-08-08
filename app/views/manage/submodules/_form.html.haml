@@ -1,0 +1,15 @@
+.h1
+  Sub Module
+- if @product.present? && @submodule.present?
+  = form_for [:manage, @product, @submodule] do |f|
+    .row
+      .col-md-6
+        = errors_for(@submodule)
+        
+        = f.hidden_field :product_id, value: @product.id
+        = f.hidden_field :parent_id, value: @content.id if @content.present?
+        .form-group
+          %label= f.label :title
+          = f.text_field :title, class: 'form-control'
+        .form-group
+          = f.submit class: 'btn btn-sm btn-primary'

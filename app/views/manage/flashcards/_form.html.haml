@@ -1,0 +1,46 @@
+= form_for [:manage, @product, @flashcard] do |f|
+  .card.card-default
+    .card-header
+      Flashcard Settings
+    .card-body
+      = errors_for(@flashcard)
+
+      = f.hidden_field :product_id, value: @product.id
+      = f.hidden_field :parent_id, value: @content.id if @content.present?
+      .form-group
+        %label= f.label :title
+        = f.text_field :title, class: 'form-control'
+      .form-group
+        %label= f.label 'Description'
+        = f.text_area :description, class: 'form-control tinymce'
+        = tinymce
+      
+      .form-group#inherit-modulee-settings
+        %p Inherit Module Configurations
+        %label.switch.switch-md
+          = f.check_box :inherit_modulee_configs, checked: (@flashcard.inherit_modulee_configs ? true : false)
+          %span
+
+      .quiz-settings{ class: @flashcard.inherit_modulee_configs ? 'd-none' : '' }
+        .form-group
+          %p Allow Shuffle
+          %label.switch.switch-md
+            = f.check_box :shuffle
+            %span
+      
+      = link_to "Flascards Settings", flashcards_setting_manage_product_flashcard_path, class: 'btn btn-primary btn-sm', 'data-turbolinks': false if @flashcard.id.present?
+          
+  -if @flashcard.id.present?
+    %h4.page-header Cards 
+
+    -@order = get_ordered_flashcard_sides @flashcard
+    
+    .row
+      = f.fields_for :flashcard_items do |flashcard_item|
+        = render 'flashcard_item_fields', f: flashcard_item, order: @order
+      .form-group.ml-3
+        = link_to_add_association 'New Flashcard Item', f, :flashcard_items, class: 'btn btn-sm btn-success'
+
+  %p
+    %hr
+      = f.submit class: 'btn btn-sm btn-primary'

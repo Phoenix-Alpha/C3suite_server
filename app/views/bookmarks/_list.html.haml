@@ -1,0 +1,15 @@
+-current_user.subscribed_products.each do |product|
+	-p_bkm = get_product_bookmarks list, product.id
+	- if p_bkm.present?
+		%h3.mt-2.m-4
+			= product.title
+
+		-p_bkm.each do |content, group|
+			.h4.mt-2.m-4
+				= content_title group.first
+			.list-group.list-group-flush.m-4
+				- group.each do |bkm|
+					%a{ href: bookmark_path(id: bkm, product_id: bkm.content.product_id), class: 'list-group-item', 'data-turbolinks': false }
+						= bookmarked_item_title bkm
+						= unbookmark_link bkm	
+        

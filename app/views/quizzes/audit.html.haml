@@ -1,0 +1,38 @@
+#quiz-view.col-lg-8.offset-lg-2.col-md-8.offset-md-2.col-sm-12.col-xs-12{ 'data-mode': (@mode if @mode.present?) , 'data-quiz-id': (@quiz.present? ? @quiz.id : @content_id) }
+
+  - @questions.collect.each_with_index do |q, index|
+    
+    - k = 1
+    - opts = {}
+    - opts[0] = q.correct
+
+    - while (k < 10 && distractor = q.send("distractor#{k}"))
+      - if distractor.present?
+        - opts[k] = distractor
+      - k += 1
+    - opts = opts.to_a.shuffle.to_h unless opts.empty?
+
+    .question{ class: ('d-none' unless index == @index), "data-explanation": q.explanation, 'data-question-id': "#{q.id}", 'data-order': "#{ opts.keys.join('') }" }
+      .card.card-default.mt-0.mb-4
+        .card-header
+          %span.current
+            %h3.float-left
+              = "Question #{index + 1}"
+              %small
+                of
+                = @questions.count
+        .card-body
+          .lead
+            = q.question
+
+          .mt-2.md-2.distractors
+            - opts.each_with_index do |opt, index|
+              .mt-1.md-1
+                = radio_button('answers', "distractor-#{q.id}", opt, 'data-index': opt[0], 'data-value': opt[1] === q.correct ? true : false)
+                %span
+                  = "&nbsp; #{opt[1]}".html_safe
+          %p.ml-4.mr-4
+            .text-muted.explanation
+
+  = link_to "NEXT<span class='btn-label btn-label-right'><i class='fa fa-arrow-right'></i></span>".html_safe, "#", class: 'btn btn-labeled btn-primary btn-sm next-question d-none', 'data-turbolinks': false
+      

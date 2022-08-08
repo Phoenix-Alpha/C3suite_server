@@ -1,0 +1,32 @@
+.list-group.m-0
+  = link_to media_path(media.actable_id), class: 'list-group-item', 'data-trubolinks':  "false" do
+    .badge.badge-info.content-type-badge
+      Media
+    %table.wd-wide
+      %tbody
+        %tr
+          %td.wd-xs
+            .px-2
+              .card.m-0
+                -if media.specific.local_type == "Video"
+                  /TODO: Video thumbmail
+                  /= image_tag(media.specific.source.preview(resize: "80x80"), class: 'rounded')
+                  %span.text-center
+                    %em.fa.fa-play-circle.fa-4x
+                -elsif media.specific.local_type == "Image"
+                  = image_tag(media.specific.source_url, class: 'img-fluid rounded')
+                -elsif media.specific.local_type == "Audio"
+                  %span.text-center
+                    %em.icon-earphones.fa-4x
+          %td
+            .px-2
+              %h4.mb-2
+                = media.title
+
+              %small.text-muted
+                -if media.specific.local_type == "Video" or media.specific.local_type == "Audio"
+                  - description = media.specific.transcript.present? ? media.specific.transcript.html_safe : '--'
+                  = raw truncate(strip_tags(description), length: 350, omission: '... ')
+                -elsif media.specific.local_type == "Image"
+                  = media.specific.caption
+            

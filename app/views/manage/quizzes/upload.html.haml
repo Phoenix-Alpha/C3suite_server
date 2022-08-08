@@ -1,0 +1,21 @@
+.content-heading
+  Upload File(s)
+= form_tag manage_product_import_path(@product), multipart: true do  
+  .card.card-default
+    .card-body
+      %p.text-muted
+        For accurate results, your excel sheet should have the following column headers (in order):
+        %br Chapter, Question, Hint, Explanation, Correct Answer, Distractor 1, Distractor 2, Distractor 3, Distractor 4, Distractor 5, Distractor 6, Distractor 6, Distractor 8, Distractor 9
+
+        = hidden_field_tag(:id, @product.id)
+        = hidden_field_tag(:content_id, @content_id) if @content_id.present?
+        = hidden_field_tag(:upload_type, 'quiz')
+        %p.error-div{ :style => "display: none; color: #ff1744" }
+          File doesn't have a proper header format. Please follow the above instructions.
+        = file_field_tag :file, required: true, id: 'upload-quiz-file'
+
+        %p
+          %small (Accepted file formats: .xls, .xlsx, .csv)
+
+    .card-footer
+      = submit_tag 'Upload File(s)', class: 'btn btn-sm btn-primary'

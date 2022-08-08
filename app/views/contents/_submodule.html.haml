@@ -1,0 +1,33 @@
+.card.border.m-0
+  #accordion
+    .card-header
+      .float-right
+        = link_to "<span class='icon-share-alt'></span>".html_safe, content_path(submodule), class: 'text-inherit', 'data-turbolinks': "false"
+      %table.wd-wide
+        %tbody
+          %tr
+            %td.wd-xs
+              .px-2
+                = image_tag(submodule.image('square'), class: 'img-fluid rounded')        
+            %td
+              .px-2
+                %h4
+                  = submodule.title        
+            %td.wd-xs
+              .px-2
+                 
+          %tr      
+            %td
+            %td
+              .text-center
+                = link_to "#",'data-toggle': "collapse", 'data-target': "#collapse-#{submodule.id}", 'aria-expanded': "true", 'aria-controls': "collapseOne", class: 'text-inherit' do
+                  %em.icon-arrow-down
+
+
+    %div{ class: "collapse", id: "collapse-#{submodule.id}", 'aria-labelledby': "headingOne", 'data-parent': "#accordion" }
+      .card-body.bg-gray
+        - submodule.children.order(:row_order).each do |c|                  
+          -if c.actable_type == "Media" and c.specific.source.present?
+            = render partial: c.actable_type.downcase, object: c rescue nil
+          -elsif c.actable_type != "Media"
+            = render partial: c.actable_type.downcase, object: c rescue nil

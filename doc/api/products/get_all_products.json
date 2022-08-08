@@ -1,0 +1,49 @@
+{
+  "resource": "Products",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/products",
+  "description": "Get all products",
+  "explanation": "Use this endpoint to get all products",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/products",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNjAyMTQ5Mzg1fQ.uK0AFImm1FIc7HjjwIY1S-81nDNtxIZFCh0sknHLJJY",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[\n  {\n    \"id\": 34,\n    \"title\": \"Fredrick Prosacco\",\n    \"icon\": null,\n    \"created_at\": \"2020-10-07T09:29:45.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:45.000Z\",\n    \"visibility\": \"All\",\n    \"tagline\": null,\n    \"html_description\": \"Consequuntur sed omnis. Asperiores corrupti numquam. Velit nisi cupiditate.\",\n    \"pricing_model\": null,\n    \"frequency\": null,\n    \"price\": \"70449.05\",\n    \"slug\": \"fredrick-prosacco\",\n    \"tags\": [\n\n    ],\n    \"configurations\": {\n    },\n    \"background_data\": null,\n    \"app_store_bundle_id\": \"com.test.app\",\n    \"app\": {\n    },\n    \"stripe\": {\n    }\n  },\n  {\n    \"id\": 35,\n    \"title\": \"Latoyia Stehr\",\n    \"icon\": null,\n    \"created_at\": \"2020-10-07T09:29:45.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:45.000Z\",\n    \"visibility\": \"All\",\n    \"tagline\": null,\n    \"html_description\": \"Officiis eius aliquam. Nihil aut voluptatem. Similique ut dolorum.\",\n    \"pricing_model\": null,\n    \"frequency\": null,\n    \"price\": \"32241.27\",\n    \"slug\": \"latoyia-stehr\",\n    \"tags\": [\n\n    ],\n    \"configurations\": {\n    },\n    \"background_data\": null,\n    \"app_store_bundle_id\": \"com.test.app\",\n    \"app\": {\n    },\n    \"stripe\": {\n    }\n  },\n  {\n    \"id\": 36,\n    \"title\": \"Jay Cummerata\",\n    \"icon\": null,\n    \"created_at\": \"2020-10-07T09:29:45.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:45.000Z\",\n    \"visibility\": \"All\",\n    \"tagline\": null,\n    \"html_description\": \"Est in corporis. Ipsa quibusdam ea. Qui quia dolores.\",\n    \"pricing_model\": null,\n    \"frequency\": null,\n    \"price\": \"34633.94\",\n    \"slug\": \"jay-cummerata\",\n    \"tags\": [\n\n    ],\n    \"configurations\": {\n    },\n    \"background_data\": null,\n    \"app_store_bundle_id\": \"com.test.app\",\n    \"app\": {\n    },\n    \"stripe\": {\n    }\n  },\n  {\n    \"id\": 37,\n    \"title\": \"Del Ullrich\",\n    \"icon\": null,\n    \"created_at\": \"2020-10-07T09:29:45.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:45.000Z\",\n    \"visibility\": \"All\",\n    \"tagline\": null,\n    \"html_description\": \"Excepturi voluptate ad. Harum dignissimos iste. In et beatae.\",\n    \"pricing_model\": null,\n    \"frequency\": null,\n    \"price\": \"22491.53\",\n    \"slug\": \"del-ullrich\",\n    \"tags\": [\n\n    ],\n    \"configurations\": {\n    },\n    \"background_data\": null,\n    \"app_store_bundle_id\": \"com.test.app\",\n    \"app\": {\n    },\n    \"stripe\": {\n    }\n  }\n]",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"c273a8e69a67d8c3b48b5492a17a72da\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "9637f431-78c1-4623-92d2-a8d2ba7cefed",
+        "X-Runtime": "0.006811",
+        "Vary": "Origin",
+        "Content-Length": "1752"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

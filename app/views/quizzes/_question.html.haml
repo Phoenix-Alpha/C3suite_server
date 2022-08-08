@@ -1,0 +1,43 @@
+- if (@time_limit.present? && (is_exam_mode? @mode)) 
+  - time_left = @time_left ? @time_left :  @time_limit 
+  .row
+    .col
+      %p{ id: 'timer', class: 'float-right lead', "data-time": "#{time_left}" }
+        
+- @questions.each_with_index do |q, index|
+  
+  - k = 1
+  - opts = {}
+  - opts[0] = q.correct
+
+  - while (k < 10 && distractor = q.send("distractor#{k}"))
+    - if distractor.present?
+      - opts[k] = distractor
+    - k += 1
+  - opts = opts.to_a.shuffle.to_h unless opts.empty?
+
+  .question{ class: ('d-none' unless index == @index), "data-explanation": q.explanation, 'data-question-id': "#{q.id}", 'data-order': "#{ opts.keys.join('') }", 'data-visited': (index < @index ? "true" : "false" ) }
+    .card.card-default.mt-0.mb-4
+      .card-header
+        %span.current
+          .h4.float-left
+            = "Question #{index + 1}"
+            %small
+              of
+              = @quiz ? @quiz.questions.count : (@questions.count if @content)
+      .card-body
+        .lead
+          = q.question
+
+        .my-3.distractors
+          - opts.each_with_index do |opt, index|
+            .my-2
+              = radio_button('answers', "distractor-#{q.id}", opt, 'data-index': opt[0], 'data-value': opt[1] === q.correct ? true : false)
+              %span
+                = "&nbsp; #{opt[1]}".html_safe
+        %p.ml-4.mr-4
+          .text-muted.explanation
+
+      - if @has_bookmarks
+        .card-footer
+          = link_to "<span class='fa far #{'bookmarked' if @bookmarks.include?(q.id)} fa-heart'></span>".html_safe, '#', class: "btn-bkmark-quiz bookmark #{'bookmarked' if @bookmarks.include?(q.id)} float-right", 'data-notify': "", 'data-message': "#{@bookmarks.include?(q.id)? 'Removed from Bookmarks' : 'Added to Bookmarks'}", 'data-options': "{&quot;pos&quot;:&quot;top-right&quot;}".html_safe, 'data-question-id': "#{q.id}", 'data-turbolinks': 'false'

@@ -1,0 +1,24 @@
+// Override uploaded html styles
+
+b.rtop, b.rbottom, b.rtopMain, b.rbottomMain {
+  display: none !important;
+}
+
+div.RoundedCornerMain {
+  background: #ccc !important;
+  padding: 7px 5px;
+  margin: -5px;
+  margin-bottom: 0px;
+  border-radius: 4px;
+}
+
+div.RoundedCorner {
+  background: #CC9999 !important;
+  margin: 10px;
+  padding: 7px 5px;
+  border-radius: 4px;
+}
+
+.menu {
+  margin-bottom: 10px;
+}

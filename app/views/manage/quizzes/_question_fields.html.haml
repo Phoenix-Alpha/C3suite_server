@@ -1,0 +1,66 @@
+.col-md-6.nested-fields
+  .card
+    .card-header{ id: "question-#{f.object.id}" }
+      .card-title.row
+        .col-10
+          = f.text_area :question, class: 'form-control'
+
+        .col-2
+          .float-right
+            = link_to "<span class='fa fa-chevron-down'></span>".html_safe, "#", class: 'btn btn-dark btn-xs clickable collapsed', 'data-toggle': "collapse", 'data-target': "#collapse-#{f.object.id}", 'aria-expanded': 'false', 'aria-control': "collapse-#{f.object.id}"
+            = link_to_remove_association "<span class='fa fa-times'></span>".html_safe, f, class: 'btn btn-warning btn-xs'
+    
+    %div{ id: "collapse-#{f.object.id}" , class: 'collapse', 'data-parent': "#accordion", 'aria-labelledby': "#question-#{f.object.id}" }
+      .card-body
+        .row
+          .col-md-12.form-group.field
+            = f.label :explanation
+            = f.text_area :explanation, class: 'form-control'
+        .row
+          .col-md-12.form-group.field
+            = f.label :hint
+            = f.text_field :hint, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :correct
+            = f.text_field :correct, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor1, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor2, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor3, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor4, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor5, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor6, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor7, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor8, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :distractor
+            = f.text_field :distractor9, class: 'form-control'
+        .row.answers
+          .col-md-12.form-group.field
+            = f.label :category
+            = f.text_field :category, class: 'form-control'

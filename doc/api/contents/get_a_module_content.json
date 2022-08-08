@@ -1,0 +1,58 @@
+{
+  "resource": "Contents",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/contents/:id",
+  "description": "Get a module content",
+  "explanation": "Use this endpoint to get a module type content against the given ID",
+  "parameters": [
+    {
+      "name": "bookmarks",
+      "description": "If flag is true and bookmarks are enabled for module, the response will contain all the bookmakrs for specific module (optional)"
+    },
+    {
+      "name": "incorrect_questions",
+      "description": "If flag is true and incorrect questions are enabled for module, the response will contain all the incorrect questions for specific module (optional)"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/contents/41?bookmarks=true&incorrect_questions=true",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MDIxNDkzODF9.6UosZ1JcZnMqkdV3Lsc3g4KnwbYsKWvjSfUMcG97P14",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "bookmarks": "true",
+        "incorrect_questions": "true"
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"contents\": {\n    \"id\": 41,\n    \"product_id\": 5,\n    \"actable_type\": \"Modulee\",\n    \"actable_id\": 20,\n    \"title\": \"title\",\n    \"children\": [\n      {\n        \"id\": 42,\n        \"product_id\": 5,\n        \"parent_id\": null,\n        \"created_at\": \"2020-10-07T09:29:41.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:41.000Z\",\n        \"ancestry\": \"41\",\n        \"actable_type\": \"Quiz\",\n        \"actable_id\": 1,\n        \"title\": \"title\",\n        \"view_count\": null,\n        \"time\": null,\n        \"row_order\": 2147483392,\n        \"description\": null,\n        \"status\": null,\n        \"children_count\": 10,\n        \"configurations\": {\n          \"has_bookmarks\": true,\n          \"incorrect_answered_quiz\": true,\n          \"id\": 1,\n          \"product_id\": 5,\n          \"parent_id\": null,\n          \"created_at\": \"2020-10-07T09:29:41.000Z\",\n          \"updated_at\": \"2020-10-07T09:29:41.000Z\",\n          \"ancestry\": \"41\",\n          \"title\": \"title\",\n          \"view_count\": null,\n          \"time\": null,\n          \"row_order\": 2147483392,\n          \"description\": null,\n          \"q_type\": null,\n          \"time_limit\": null,\n          \"shuffle\": null,\n          \"back_navigation\": null,\n          \"start_over\": null,\n          \"passing_percentage\": null,\n          \"skippable\": null,\n          \"inherit_modulee_configs\": true\n        },\n        \"image\": \"/images/placeholder.png\"\n      }\n    ],\n    \"bookmarks\": [\n      {\n        \"id\": 1,\n        \"user_id\": 2,\n        \"content_id\": 42,\n        \"content_type\": \"Question\",\n        \"content_type_id\": 1,\n        \"created_at\": \"2020-10-07T09:29:41.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:41.000Z\"\n      },\n      {\n        \"id\": 2,\n        \"user_id\": 2,\n        \"content_id\": 42,\n        \"content_type\": \"Question\",\n        \"content_type_id\": 2,\n        \"created_at\": \"2020-10-07T09:29:41.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:41.000Z\"\n      },\n      {\n        \"id\": 3,\n        \"user_id\": 2,\n        \"content_id\": 42,\n        \"content_type\": \"Question\",\n        \"content_type_id\": 3,\n        \"created_at\": \"2020-10-07T09:29:41.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:41.000Z\"\n      }\n    ],\n    \"incorrect_questions\": [\n      {\n        \"id\": 1,\n        \"user_id\": 2,\n        \"content_id\": 42,\n        \"content_type_id\": 1,\n        \"created_at\": \"2020-10-07T09:29:41.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:41.000Z\"\n      },\n      {\n        \"id\": 2,\n        \"user_id\": 2,\n        \"content_id\": 42,\n        \"content_type_id\": 2,\n        \"created_at\": \"2020-10-07T09:29:41.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:41.000Z\"\n      },\n      {\n        \"id\": 3,\n        \"user_id\": 2,\n        \"content_id\": 42,\n        \"content_type_id\": 3,\n        \"created_at\": \"2020-10-07T09:29:41.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:41.000Z\"\n      }\n    ]\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"ac8654bc7ba39c0e253bde460f7f1bbb\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "9ef4f979-a0db-4742-b8b1-513c9ef89ebd",
+        "X-Runtime": "0.030394",
+        "Vary": "Origin",
+        "Content-Length": "1847"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

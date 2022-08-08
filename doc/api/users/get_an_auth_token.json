@@ -1,0 +1,56 @@
+{
+  "resource": "Users",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "api/v1/users/token",
+  "description": "Get an auth token",
+  "explanation": "Use this endpoint to get a JWT token for authentication.",
+  "parameters": [
+    {
+      "name": "email",
+      "description": "Email"
+    },
+    {
+      "name": "password",
+      "description": "Password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "api/v1/users/token",
+      "request_body": "email=uzair%40emerssive.com&password=code3apps",
+      "request_headers": {
+        "Host": "example.org",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"auth_token\": \"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOSwiZXhwIjoxNjAyMTQ5Mzg3fQ.ZZCjrUghOJSEBV7g3V_05AADvz05OTryaIZaOLJ4jYk\",\n  \"user\": {\n    \"id\": 19,\n    \"email\": \"uzair@emerssive.com\",\n    \"created_at\": \"2020-10-07T09:29:47.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:47.000Z\",\n    \"username\": \"testuser\",\n    \"ancestry\": null,\n    \"stripe_customer_id\": null\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"d782fc4c28a992a0599c94d4e8184e08\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "8bb99342-ae71-49d6-a907-bbb73062fa30",
+        "X-Runtime": "0.015210",
+        "Vary": "Origin",
+        "Content-Length": "330"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

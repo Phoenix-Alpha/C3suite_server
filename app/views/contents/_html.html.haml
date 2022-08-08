@@ -1,0 +1,23 @@
+.list-group.m-0
+  = link_to html_path(html.actable_id), class: 'list-group-item', 'data-turbolinks': "false" do
+    .badge.badge-info.content-type-badge
+      HTML
+    %table.wd-wide
+      %tbody
+        %tr
+          %td.wd-xs
+            .px-2
+              = image_tag(html.image('square'), class: 'img-fluid rounded')
+          %td
+            .px-2
+              %h4.mb-2
+                = html.title
+              %small.text-muted
+                - description = html.specific.html_source.present? ? html.specific.html_source.html_safe : '--'
+                = raw truncate(strip_tags(description), length: 350, omission: '... ')
+          - if current_user.present?
+            %td.wd-sm
+              .px-2
+                %p.m-0 Status
+                %small.text-muted
+                  = viewed_html html

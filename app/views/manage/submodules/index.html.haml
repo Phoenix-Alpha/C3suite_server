@@ -1,0 +1,38 @@
+.h3 Sub Modules
+
+- if @submodules.present?
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th Title
+        %th
+    %tbody
+      - @submodules.each do |submodule|
+        - if can? :read, Submodule
+          %tr 
+            %td
+              = link_to submodule.title, manage_product_submodule_path(@product, submodule), class: 'btn-link'
+            %td 
+              .btn-group
+                %button{ type: 'button', class: 'btn btn-primary btn-sm dropdown-toggle', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } }
+                  Actions
+                  %span.caret
+                %ul.dropdown-menu
+                  - if can? :read, submodule
+                    %li
+                      = link_to 'View', manage_product_submodule_path(@product, submodule)
+                  - if can? :manage, submodule
+                    %li
+                      = link_to 'Edit', edit_manage_product_submodule_path(@product, submodule)
+                  - if can? :manage, submodule
+                    %li
+                      = link_to 'Destroy', manage_product_submodule_path(@product, submodule), method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  %p.well
+    No records found
+
+%br
+- if can? :manage, @user
+  = link_to 'New Sub Module', new_manage_product_submodule_path, class: 'btn btn-sm btn-success'
+
+= link_to 'Back', manage_product_path(@product), class: 'btn btn-sm btn-primary'

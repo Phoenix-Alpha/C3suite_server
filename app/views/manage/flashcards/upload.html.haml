@@ -1,0 +1,22 @@
+.content-heading
+  Upload Flashcard File(s)
+
+= form_tag manage_product_import_path(@product), multipart: true do
+  .card.card-default
+    .card-body
+      %p.text-muted
+        For accurate results, your excel sheet should have the following column headers (in order):
+        %br Chapter, Question, Answer
+
+        = hidden_field_tag(:id, @product.id)
+        = hidden_field_tag(:content_id, @content_id) if @content_id.present?
+        = hidden_field_tag(:upload_type, 'flashcard')
+        %p.error-div{ :style => "display: none; color: #ff1744" }
+          File doesn't have a proper header format. Please follow the above instructions.
+        = file_field_tag :file, required: true, id: 'upload-flashcard-file'
+
+        %p
+          %small (Accepted file formats: .xls, .xlsx, .csv)
+
+    .card-footer
+      = submit_tag 'Upload File(s)', class: 'btn btn-sm btn-primary uploadbutton'

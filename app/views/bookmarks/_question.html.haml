@@ -1,0 +1,41 @@
+- quiz = question.first.quiz
+
+#quiz-view.col-lg-8.offset-lg-2.col-md-8.offset-md-2.col-sm-12.col-xs-12{ 'data-mode': "study" }
+  %h2
+    = quiz.title unless quiz.blank?
+  / = render "question", { quiz: @quiz, questions: @questions, index: @index, modulee: @modulee, bookmarks: @bookmarks }
+  - question.each_with_index do |q, index|
+    .question{ class: ('d-none' unless index == 0), 'data-question-id': "#{q.id}", "data-explanation": q.explanation }
+      .card.card-default.mt-0.mb-4
+        .card-header
+          %span.current
+            %h3.float-left
+              = "Question #{index + 1}"
+              %small
+                of
+                = question.count
+
+        .card-body
+          - k = 1
+          - opts = [q.correct]
+
+          - while (k < 10 && distractor = q.send("distractor#{k}"))
+            - if distractor.present?
+              - opts.push(distractor)
+            - k += 1
+          - opts = opts.shuffle unless opts.empty?
+
+          .lead
+            = q.question
+
+          .mt-2.md-2.distractors.distractors
+            - opts.each_with_index do |opt, index|
+              .mt-1.md-1
+                = radio_button('answers', 'distractor', opt, "data-value": opt === q.correct ? true : false)
+                %span
+                  = "&nbsp; #{opt}".html_safe
+          %p.ml-4.mr-4
+            .text-muted.explanation                  
+  .row
+    .col
+      = link_to "NEXT<span class='btn-label btn-label-right'><i class='fa fa-arrow-right'></i></span>".html_safe, "#", class: 'btn btn-labeled btn-primary btn-sm next-question float-right d-none', 'data-turbolinks': false

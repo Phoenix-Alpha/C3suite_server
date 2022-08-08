@@ -1,0 +1,57 @@
+{
+  "resource": "Users",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "api/v1/users/change_email",
+  "description": "Change user email",
+  "explanation": "Use this endpoint to change user email.",
+  "parameters": [
+    {
+      "name": "email",
+      "description": "New email address to be updated"
+    },
+    {
+      "name": "password",
+      "description": "User's current password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "api/v1/users/change_email",
+      "request_body": "email=earl%40kiehn-bayer.net&password=code3apps",
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNCwiZXhwIjoxNjAyMTQ5Mzg3fQ.gpdTUIS7gk7hKwfImh4N6Cn1KlqIaFRLWzWo9m7YG2U",
+        "Host": "example.org",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"c955e57777ec0d73639dca6748560d00\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "e7e96300-466c-4ba5-8c0c-cc48729024e5",
+        "X-Runtime": "0.010000",
+        "Vary": "Origin",
+        "Content-Length": "16"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

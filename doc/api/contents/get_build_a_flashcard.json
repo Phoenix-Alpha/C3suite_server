@@ -1,0 +1,49 @@
+{
+  "resource": "Contents",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/contents/:id/get_build_flashcard",
+  "description": "Get build a flashcard",
+  "explanation": "Use this endpoint to get build test of type flashcard against the content ID of actable type module",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/contents/233/get_build_flashcard",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMCwiZXhwIjoxNjAyMTQ5Mzg0fQ.SW1wEVCwoDD8TmpHaFWGWDn7T-4xgUlm_AW3E-FJRQE",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"contents\": {\n    \"flashcards\": [\n      {\n        \"id\": 16,\n        \"front\": \"Et aut sapiente qui.\",\n        \"back\": \"Esse maiores eum quidem.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 2080374784,\n        \"side_data\": null\n      },\n      {\n        \"id\": 17,\n        \"front\": \"Doloribus esse voluptatem est.\",\n        \"back\": \"Aut et dolorem consequatur.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 2113929216,\n        \"side_data\": null\n      },\n      {\n        \"id\": 18,\n        \"front\": \"In ut dolor itaque.\",\n        \"back\": \"Voluptas cum est suscipit.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 2130706432,\n        \"side_data\": null\n      },\n      {\n        \"id\": 11,\n        \"front\": \"Voluptatem optio nulla asperiores.\",\n        \"back\": \"Aut alias id voluptas.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 0,\n        \"side_data\": null\n      },\n      {\n        \"id\": 20,\n        \"front\": \"Beatae quisquam accusantium adipisci.\",\n        \"back\": \"Blanditiis qui dolores porro.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 2143289344,\n        \"side_data\": null\n      },\n      {\n        \"id\": 14,\n        \"front\": \"Veritatis exercitationem quia voluptas.\",\n        \"back\": \"At dolores dolor adipisci.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 1879048192,\n        \"side_data\": null\n      },\n      {\n        \"id\": 19,\n        \"front\": \"Incidunt sed voluptatem id.\",\n        \"back\": \"Dolorem molestias voluptatum quia.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 2139095040,\n        \"side_data\": null\n      },\n      {\n        \"id\": 13,\n        \"front\": \"Asperiores inventore sit quo.\",\n        \"back\": \"Eos accusamus sed deserunt.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 1610612736,\n        \"side_data\": null\n      },\n      {\n        \"id\": 15,\n        \"front\": \"Deserunt cumque possimus occaecati.\",\n        \"back\": \"Cum ipsam eveniet pariatur.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 2013265920,\n        \"side_data\": null\n      },\n      {\n        \"id\": 12,\n        \"front\": \"Deleniti neque unde ea.\",\n        \"back\": \"Et omnis minima quo.\",\n        \"flashcard_id\": 2,\n        \"row_order\": 1073741824,\n        \"side_data\": null\n      }\n    ],\n    \"viewed\": {\n      \"id\": 105,\n      \"content_type\": \"BuildFlashcard\",\n      \"ancestry\": null,\n      \"content_type_id\": {\n        \"11\": {\n          \"selected\": 0,\n          \"order\": \"0123\"\n        },\n        \"12\": {\n          \"selected\": 0,\n          \"order\": \"0123\"\n        },\n        \"13\": {\n          \"selected\": 3,\n          \"order\": \"0123\"\n        }\n      },\n      \"created_at\": \"2020-10-07T09:29:44.000Z\",\n      \"updated_at\": \"2020-10-07T09:29:44.000Z\",\n      \"user_id\": 10,\n      \"content_id\": 233,\n      \"completed\": false,\n      \"remaining_time\": null\n    }\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"555c37b82565eeaf1953e0c76bec9b74\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "b4e8a0bf-75e8-4487-abe8-78476afc8a7c",
+        "X-Runtime": "0.010611",
+        "Vary": "Origin",
+        "Content-Length": "1813"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

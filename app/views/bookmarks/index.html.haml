@@ -1,0 +1,45 @@
+#bookmarks.col-lg-8.offset-lg-2.col-md-8.offset-md-2.col-sm-12.col-xs-12
+  %h2 Bookmarks
+
+  - if @q_bkms.present? || @f_bkms.present? || @h_bkms.present? || @m_bkms.present?
+    .card.card-transparent{:role => "tabpanel"}
+
+      %ul.nav.nav-tabs.nav-fill{:role => "tablist"}
+        - if @q_bkms.present?
+          %li.nav-item{:role => "presentation"}
+            %a.nav-link.active.bb0{"aria-controls" => "quizzes", "data-toggle" => "tab", :href => "#quizzes", :role => "tab"}
+              %em.fas.fa-tasks
+              Quizzes
+        - if @f_bkms.present?
+          %li.nav-item{:role => "presentation"}
+            %a.nav-link.bb0{class: !@q_bkms.present? ? 'active' : '' ,"aria-controls" => "flashcards", "data-toggle" => "tab", :href => "#flashcards", :role => "tab"}
+              %em.fas.fa-map
+              Flashcards
+        - if @h_bkms.present?  
+          %li.nav-item{:role => "presentation"}
+            %a.nav-link.bb0{"aria-controls" => "htmls", "data-toggle" => "tab", :href => "#htmls", :role => "tab"}
+              HTMLs
+
+        - if @m_bkms.present?  
+          %li.nav-item{:role => "presentation"}
+            %a.nav-link.bb0{"aria-controls" => "medias", "data-toggle" => "tab", :href => "#medias", :role => "tab"}
+              Media
+
+
+      .tab-content.p-0.bg-white
+        - if @q_bkms.present?
+          #quizzes.tab-pane.active{ role: 'tabpanel' }
+            = render partial: 'list', object: @q_bkms
+        - if @f_bkms.present?
+          #flashcards.tab-pane{class: !@q_bkms.present? ? 'active' : '' , role: 'tabpanel' }
+            = render partial: 'list', object: @f_bkms
+        - if @h_bkms.present?  
+          #htmls.tab-pane{ role: 'tabpanel' }
+            = render partial: 'list', object: @h_bkms
+        - if @m_bkms.present?  
+          #medias.tab-pane{ role: 'tabpanel' }
+            = render partial: 'list', object: @m_bkms
+
+  - else
+    %p.well
+      No bookmarks found

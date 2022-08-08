@@ -1,0 +1,32 @@
+.content-heading
+  Bundles
+
+  .ml-auto
+    = link_to 'New Bundle', new_manage_bundle_path, class: 'btn btn-sm btn-success', 'data-turbolinks': false if can? :manage, @bundle
+
+- if @bundle.present?
+  .card.card-default
+    .card-body
+      .table-responsive
+        %table.table.table-striped.table-hover
+          %thead
+            %tr
+              %th Title
+              %th
+          %tbody
+            - @bundle.each do |bundle|
+              %tr
+                %td= link_to bundle.title, manage_bundle_path(bundle), class: 'btn-link'
+                %td
+                  .btn-group
+                    %button.btn.btn-secondary{ type: 'button' } Action
+                    %button.btn.dropdown-toggle.btn-secondary{ 'data-toggle': 'dropdown', type: 'button' }
+                    .dropdown-menu.dropdown-menu-right{ role: 'menu' }
+                      = link_to 'View', manage_bundle_path(bundle), class: 'dropdown-item' if can? :read, bundle
+                      = link_to 'Edit', edit_manage_bundle_path(bundle), class: 'dropdown-item', 'data-turbolinks': false if can? :update, bundle
+                      = link_to 'Destroy', manage_bundle_path(bundle), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' if can? :destroy, bundle
+- else
+  %p.well No records found.
+
+= link_to 'Back', dashboard_path, class: 'btn btn-sm btn-secondary'
+= link_to 'New Bundle', new_manage_bundle_path, class: 'btn btn-sm btn-success', 'data-turbolinks': false if can? :manage, @bundle

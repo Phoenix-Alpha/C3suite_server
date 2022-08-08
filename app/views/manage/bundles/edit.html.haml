@@ -1,0 +1,6 @@
+.content-heading
+  Edit Bundle
+  .ml-auto
+    = link_to 'Manage AppStore Products', manage_bundle_app_store_path(@bundle), class: 'btn btn-sm btn-info'
+
+= render 'form', bundle: @bundle

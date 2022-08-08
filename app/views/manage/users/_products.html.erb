@@ -1,0 +1,19 @@
+<% if products.present? %>
+  <% products.each do |product| %>
+    <% if can? :update, product %>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <label class="col-md-6 control-label"><%= "#{product.title}".html_safe %></label>
+            <div class="col-md-6">
+              <% if form %>
+                <%= hidden_field_tag 'product_ids[]', product.id %>
+                <%= select_tag 'role_ids[]', options_for_select(user.roles.map(&:name), user.user_products.role(product.id)), prompt: 'None', class: 'form-control' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

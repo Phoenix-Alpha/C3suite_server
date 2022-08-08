@@ -1,0 +1,14 @@
+.content-heading
+  = @html.title
+  .ml-auto
+    = link_to 'Edit HTML', edit_manage_product_html_path(@product, @html, content_id: @html.parent_id), class: 'btn btn-secondary btn-sm' if can? :update, @html.acting_as
+
+.card.card-default
+  .card-header
+    PREVIEW
+
+  .card-body
+    = raw(@html.html_source)
+
+= link_to 'Back', manage_product_path(@product), class: 'btn btn-secondary btn-sm'
+= link_to 'Edit HTML', edit_manage_product_html_path(@product, @html, content_id: @html.parent_id), class: 'btn btn-secondary btn-sm' if can? :update, @html.acting_as

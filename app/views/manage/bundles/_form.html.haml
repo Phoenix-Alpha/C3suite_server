@@ -1,0 +1,38 @@
+= form_for [:manage, @bundle], html: { class: 'form-horizontal' } do |f|
+  .card.card-default
+    .card-body
+      = errors_for(@bundle)
+
+      .form-group
+        = f.label :title, class: 'control-label'
+        = f.text_field :title, class: 'form-control', required: true
+      .form-group
+        = f.label :app_store_bundle_id, class: 'control-label'
+        = f.text_field :app_store_bundle_id, class: 'form-control border-primary', placeholder: "i.e   com.c3.#{@bundle.title ? @bundle.title : 'product'}"
+      .form-group
+        = f.label :description, class: 'control-label'
+        = f.text_area :description, class: 'form-control tinymce'
+        = tinymce
+      .form-group
+        = f.label "Products: ", class: 'control-label' 
+        %span.ml-2
+          (Hold
+          %span{class: 'badge badge-dark'} Ctrl
+          to select multiple Products)
+        = f.select :products, options_for_select((bundleable_products @bundle), selected: (bundled_products @bundle), value: Product.all.pluck(:id) ), { include_blank: false }, { class: 'chosen-select form-control', id: 'products', multiple: true, 'data-placeholder': 'Select Product(s)' }
+      .form-group
+        %p Allow Single Product Subscription
+        %label.switch.switch-md
+          = f.check_box :allow_single_product_subscription, checked: f.object.allow_single_product_subscription
+          %span
+      .form-group
+        = f.label :price, class: 'control-label'
+        = f.select :price, options_for_select(price_tier , @bundle.price), { include_blank: false }, { class: 'chosen-select form-control', 'data-placeholder': 'Price Tier' }
+
+
+    .card-footer
+      = link_to 'Back', manage_bundles_path(@bundle), class: 'btn btn-sm btn-secondary'
+      = f.submit class: 'btn btn-sm btn-primary'
+
+
+

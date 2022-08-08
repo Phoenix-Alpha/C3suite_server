@@ -1,0 +1,7 @@
+.row.nested-fields
+  .col-md-1.form-group.field
+    = f.radio_button :correct, f.object.correct.present? && f.object.correct ? true : false, checked: f.object.correct.present? && f.object.correct ? true : false
+  .col-md-10.form-group.field
+    = f.text_field :text, placeholder: 'answer text', class: 'form-control'
+  .col-md-1
+    = link_to_remove_association "<span class='glyphicon glyphicon-remove'></span>".html_safe, f, class: 'btn btn-warning btn-sm btn-answer-rmv'

@@ -1,0 +1,35 @@
+= form_for [:manage, @content, @asset] do |f|
+  .card.card-default
+    .card-body
+      = errors_for(@asset)
+
+      = f.hidden_field :content_id, value: @content.id
+      = f.hidden_field :local_type, value: 'Image'
+
+      .form-group
+        %label= f.label :description
+        = f.text_field :description, class: 'form-control'
+
+      .form-group
+        %label= f.label :kind
+        = f.select :kind, options_for_select(AssetKind.all.collect {|k| [k.kind.capitalize, k.id]}, selected: @asset.kind), { include_blank: true }, class: 'chosen-select form-control'
+
+      .form-group
+        %label
+          = f.check_box :active
+          Active
+        %span.small.help-block
+          (Only active assets shall be used for mobile apps)
+
+      .form-group
+        %label= f.label :source, 'Upload Media File'
+        %br
+        = f.hidden_field :source, value: @asset.cached_source_data
+        = f.file_field :source, required: @asset.source.present? ? false : true
+
+    #image-holder
+      = image_tag @asset.source_url if @asset.source.present?
+
+    .card-footer
+      = link_to 'Back', manage_content_content_assets_path, class: 'btn btn-sm btn-secondary'
+      = f.submit class: 'btn btn-sm btn-primary'

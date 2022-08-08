@@ -1,0 +1,15 @@
+- progress = modulee_progress modulee if current_user.present?
+
+.card
+  = image_tag(modulee.image('square'), class: 'card-img-top img-fluid')
+  .card-body
+    .h4.text-left.text-dark
+      = modulee.specific.title  
+    - if UserSubscription.subscription_current?(current_user, @product)
+      .d-flex.align-items-center.p
+        .w-100{ 'data-toggle': "tooltip", 'data-title': "Progress" }
+          .progress.progress-xs.m-0
+            .progress-bar{ class: (progress < 40 ? 'bg-yellow' : 'bg-green' ), style: "width:#{progress}%" }
+        .w-xxs.text-right
+          .text-bold.text-muted.ml-1
+            = "#{progress}%"

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello User </h1>
+
+    <p>
+      <% if @flag==false %>
+      Please Use this login credentials for <a href="23.20.37.229">C3Suite </a> : <br><br>
+      Email : <%= @user.email %><br>
+      Password : <%= @user.password %><br><br>
+
+      Change password from Edit Profile
+      <% else %>
+      You Can now edit the content of the product <%= @product %><br>
+      Please login With your credentials for <a href="23.20.37.229">C3Suite </a> <br>
+      <% end %>
+    </p>
+  </body>
+</html>

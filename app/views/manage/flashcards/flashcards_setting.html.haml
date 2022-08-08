@@ -1,0 +1,57 @@
+- order = (manage_order @flashcard.sides_label, @flashcard.attachment_side) if @flashcard.sides_label.present? and @flashcard.attachment_side.present? 
+= form_with url: update_flashcard_labels_manage_product_flashcard_path, method: 'get', local: true, id: "flashcard-setting" do |l|     
+  .card.card-default
+    .card-header.h3
+      Flashcard Settings
+    .card-body  
+      .form-group#flashcard-sides
+        .h4 Flashcard Sides Setting
+        .form-group.row.m-4
+          .col-md-10
+            %label{ class: 'checkbox c-checkbox c-checkbox-rounded' }
+              = l.check_box "sides_count", { class: 'two-sided', checked: (@flashcard.sides_count == "2") ? true : false }, "2", nil
+              %span{ class: 'fa fa-check' } 
+              Allow 2-sided flashcards (default)
+            
+            %label{ class: 'checkbox c-checkbox c-checkbox-rounded ml-4' }
+              = l.check_box "sides_count", { class: 'three-sided', checked: (@flashcard.sides_count == "3") ? true : false }, "3", nil
+              %span{ class: 'fa fa-check' }  
+              Allow 3-sided flashcards
+            
+      .h4 Labels for flashcard sides
+      %div.m-4#labels-setting
+        .form-group
+          = l.label "front", "First Side Label :"
+          = l.text_field "front", { class: 'form-control', value: (order[0] if order.present?) || '', placeholder: "FRONT (default)" }
+        
+        .form-group  
+          = l.label "back", "Second Side Label :"
+          = l.text_field "back", { class: 'form-control', value: (order[1] if order.present?) || '', placeholder: "BACK (default)"}
+            
+        .form-group#side{ class: (@flashcard.sides_count == '2') ? 'd-none' : '' }  
+          = l.label "side", "Third Side Label :"
+          = l.text_field "side", { class: 'form-control', value: (order[2] if order.present?) || '',placeholder: "SIDE (default)" }  
+      
+      %div#attachment-side{ class: (@flashcard.sides_count == '2') ? 'd-none' : '' }
+        .h4 Select side for attachment
+        .form-group.row
+          .col-md-10.m-4
+            %label{ class: 'checkbox c-checkbox c-checkbox-rounded ml-4' }
+              = l.check_box "attachment_side", { checked: @flashcard.attachment_side == 'front' ? true : false }, "front", nil
+              %span{ class: 'fa fa-check' }
+              First Side  
+
+            %label{ class: 'checkbox c-checkbox c-checkbox-rounded ml-4' }
+              = l.check_box "attachment_side", { checked: @flashcard.attachment_side == 'back' ? true : false }, "back", nil
+              %span{ class: 'fa fa-check' }
+              Second Side  
+
+            %label{ class: 'checkbox c-checkbox c-checkbox-rounded ml-4' }
+              = l.check_box "attachment_side", { checked: (@flashcard.attachment_side == 'side' or @flashcard.attachment_side.nil?) ? true : false }, "side", nil
+              %span{ class: 'fa fa-check' }
+              Third Side  
+
+    .card-footer        
+      = link_to 'Back', edit_manage_product_flashcard_path(@product, @flashcard), class: 'btn btn-success btn-sm'
+      = l.submit class: 'btn btn-primary btn-sm'              
+      

@@ -1,0 +1,14 @@
+.content-heading
+  Upload HTML File(s)
+
+= form_tag manage_product_import_path(@product), multipart: true do
+  .card.card-default
+    .card-body
+      = hidden_field_tag(:id, @product.id)
+      = hidden_field_tag(:content_id, @content_id) if @content_id.present?
+      = hidden_field_tag(:upload_type, 'html')
+      = file_field_tag 'files[]', multiple: true, required: true
+      %p
+        %small Accepted file formats: .html, .zip (collection of html files)
+    .card-footer
+      = submit_tag 'Upload File(s)', class: 'btn btn-sm btn-primary'

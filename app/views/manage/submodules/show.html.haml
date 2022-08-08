@@ -1,0 +1,25 @@
+.h2
+  = @submodule.title
+.panel.panel-default
+  .panel-body
+    - if can? :update, @submodule
+      .row
+        .col-md-12
+          .pull-right
+            Add:
+            = render '/manage/partials/add_new_actions', { product: @product, object: @submodule.content, type: "submodule" }
+            
+    %br
+    %ul.sortable
+      / Re-order by :row_order so that all the children specific to modulee are in order
+      - @submodule.children.order(:row_order).each do |child|
+        %li{ "data-content-id": child.id }
+          = render partial: '/manage/products/' << child.actable_type.downcase, object: child
+
+
+= link_to 'Back', manage_product_path(@product), class: 'btn btn-sm btn-secondary'
+- if can? :update, @submodule
+  = link_to 'Edit', edit_manage_product_submodule_path(@product, @submodule), class: 'btn btn-sm btn-secondary'
+
+%br
+%br

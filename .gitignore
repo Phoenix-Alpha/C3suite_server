@@ -1,0 +1,59 @@
+
+*.rbc
+capybara-*.html
+.rspec
+.idea/
+/log
+/log/*
+/tmp
+/db/*.sqlite3
+/public/system
+/coverage/
+/spec/tmp
+/public/assets
+/public/uploads/
+**.orig
+.byebug_history
+.DS_Store
+
+## vim temporary files
+
+*.swp
+*.swo
+
+
+## Environment normalisation:
+/.bundle
+/vendor/bundle
+
+# these should all be checked in to normalise the environment:
+# Gemfile.lock, .ruby-version, .ruby-gemset
+
+# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+.rvmrc
+
+# ruby-gemset and ruby-version
+.ruby-*
+
+# ignore application logs
+log/development.log
+
+# ignore .env file(s)
+.env
+
+# yarn packages
+node_modules/
+
+# Don't push ActiveStorage :local files
+storage/
+
+
+#viscode binary files
+ .vscode-root*
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

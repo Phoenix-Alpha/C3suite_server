@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %title C3Suite
+    = include_gon
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    
+    = stylesheet_link_tag 'base'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    = javascript_include_tag 'base'
+    = yield :vendor_js_area
+    = javascript_include_tag 'application'
+    = yield :body_area
+
+  %body
+    %section
+      .content-wrapper
+        .col-lg-8.offset-lg-2.col-md-12.col-sm-12.col-xs-12
+          .ol
+            = render_breadcrumbs builder: ::BootstrapBreadcrumbsBuilder , separator: ' / '
+            - if current_user.present?
+              = link_to "My Bookmarks", bookmarks_url, class: 'btn btn-inverse btn-sm user-bookmark-btn float-right' unless @product.nil?
+          %hr
+        
+          - flash.each do |key, value|
+            %div{ class: flash_class(key) }
+              %button.close{ "aria-label": "Close", "data-dismiss": "alert", type: "button" }
+                %span{"aria-hidden" => "true"}
+                  &times
+              %strong
+                = value
+        = yield
+        
+  = javascript_packs_with_chunks_tag 'application', 'forms'
+    

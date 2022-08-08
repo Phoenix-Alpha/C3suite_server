@@ -1,0 +1,110 @@
+- if @product.present? && @modulee.present?
+  = form_for [:manage, @product, @modulee], html: { class: 'form-horizontal' } do |f|
+    .card.card-default
+      .card-body
+        = errors_for(@modulee)
+        
+        = f.hidden_field :product_id, value: @product.id
+
+        .form-group
+          %label= f.label :title
+          = f.text_field :title, class: 'form-control'
+
+        .form-group
+          %label= f.label "Main Section Title"
+          = f.text_field :section_title, class: 'form-control'
+        - module_has_quiz = @modulee.has_quizzes?
+        - module_has_flashcard = @modulee.has_flashcards?
+        -if module_has_quiz
+          .form-group
+            %label= f.label :time_limit
+            = f.number_field :time_limit, class: 'form-control mb-2', placeholder: 'Time Allowed for Comprehensive Quiz (in seconds)', step: 10, min: 0
+
+        .row
+          .col-md-4.col-xl-4.border-top.pt-2
+            %p Auditable - Allow user to audit this module without subscribing the product
+            %label.switch.switch-md
+              = f.check_box :auditable, checked: ((@configs[:auditable] ? true : false )  if @configs.present?)
+              %span
+        .row{:id => "modulee_auditable_config"}
+          .form-group.pl-3
+            %label Auditable no. of Questions
+            = f.text_field 'auditable_questions_limit', { value: (@configs[:auditable_questions_limit] if @configs.present?) , class: ['form-control auditable-input']}
+          .form-group.pl-3
+            %label Auditable no. of Flashcards
+            = f.text_field 'auditable_flashcards_limit', { value: (@configs[:auditable_flashcards_limit] if @configs.present?) , class: ['form-control auditable-input']}
+        .row
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Allow Bookmarks - User could bookmark the content types in this module and view all the bookmarked items
+            %label.switch.switch-md
+              = f.check_box :has_bookmarks, checked: ((@configs[:has_bookmarks] ? true : false)  if @configs.present?)
+              %span
+        
+        .row
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Allow Startover - User could startover the current progress for quizzes or flashcards
+            %label.switch.switch-md
+              = f.check_box :startover, checked: ((@configs[:startover] ? true : false)  if @configs.present?)
+              %span
+
+        .row
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Skippable - Allow user to skip questions (unanswered) in exam mode quizzes
+            %label.switch.switch-md
+              = f.check_box :skippable, checked: ((@configs[:skippable] ? true : false)  if @configs.present?), disabled: !module_has_quiz
+              %span
+
+        .row
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Shuffle - Shuffeled questions and flashcard items for each chapter.
+            %label.switch.switch-md
+              = f.check_box :shuffle, checked: ((@configs[:shuffle] ? true : false)  if @configs.present?)
+              %span
+
+        .row  
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Allow User to Build Quiz
+            %label.switch.switch-md
+              = f.check_box :allow_build_quiz, checked: ((@configs[:allow_build_quiz] ? true : false) if @configs.present?)
+              %span
+
+        .row  
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Generate Quiz for incorrectly answered
+            %label.switch.switch-md
+              = f.check_box :incorrect_answered_quiz, checked: ((@configs[:incorrect_answered_quiz] ? true : false) if @configs.present?)
+              %span
+
+        .row  
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Allow User to Build Flashcard
+            %label.switch.switch-md
+              = f.check_box :allow_build_flashcard, checked: ((@configs[:allow_build_flashcard] ? true : false) if @configs.present?)
+              %span
+                  
+        .row  
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Allow Comprehensive Quizzes
+            - unless module_has_quiz
+              .text-sm.text-muted (No Quiz records found)
+              .br
+            %label.switch.switch-md
+              = f.check_box :allow_comprehensive_quizzes, checked: ((@configs[:allow_comprehensive_quizzes] ? true : false) if @configs.present?), disabled: !module_has_quiz , id: 'allow-comprehensive-quiz-checkbox'
+              %span
+        - if @quizzes.present?
+          .row
+            .col-lg-6.col-md-6.col-sm-12.col-xs-12
+              .card#comprehensive-quiz-settings{ class: @configs[:allow_comprehensive_quizzes] ? "" : "d-none" }
+                .card-body
+                  = link_to 'Manage Comprehensive Quiz', comprehensive_quiz_manage_product_modulee_path, class: "btn btn-sm btn-secondary", 'data-turbolinks': false
+
+        .row
+          .col-md-4.col-xl-4.col-sm-12.border-top.pt-2
+            %p Allow Comprehensive Flashcards
+            %label.switch.switch-md
+              = f.check_box :allow_comprehensive_flashcards, checked: ((@configs[:allow_comprehensive_flashcards] ? true : false) if @configs.present?), disabled: !module_has_flashcard
+              %span
+
+      .card-footer
+        = link_to 'Back', :back, class: 'btn btn-sm btn-secondary'
+        = f.submit class: 'btn btn-sm btn-primary'

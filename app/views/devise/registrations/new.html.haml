@@ -1,0 +1,31 @@
+.block-center.mt-4.wd-xl
+  .card.card-flat
+    .card-header.text-center.bg-dark
+      %a{href: "/"}
+        C3Suite
+    .card-body
+      %p.text-center.py-2 SIGN UP TO GET INSTANT ACCESS.
+
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .form-group
+          = f.label :email
+          = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Enter email', autocomplete: 'off', required: true
+        .form-group
+          = f.label :username, class: 'control-label'
+          %br/
+          = f.text_field :username, class: 'form-control', placeholder: 'Enter username', autocomplete: 'off', required: true
+        .form-group
+          = f.label :password
+          = f.password_field :password, class: 'form-control', placeholder: 'Enter password', autocomplete: 'off', required: true
+          - if @minimum_password_length
+            %span.text-muted
+              (#{@minimum_password_length} characters minimum)
+        .form-group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Enter confirmation password', autocomplete: 'off', required: true
+        = f.submit "Sign Up", class: 'btn btn-block btn-primary mt-3'
+      .mt-3
+        Already have an account? #{render "devise/shared/links"}
+
+  = render 'layouts/partials/footer'

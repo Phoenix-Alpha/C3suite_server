@@ -1,0 +1,22 @@
+.content-heading
+  Content
+
+%p
+  %strong
+    Product: 
+  = @content.product.title if @content.product.present?
+
+%p
+  %strong
+    Title:  
+  = @content.title
+
+%p
+  %strong
+    Type: 
+  = @content.actable_type
+
+= link_to 'Edit', edit_manage_content_path(@content), class: 'btn btn-sm btn-outline-secondary' if can? :update, @content
+= link_to 'Back', manage_contents_path, class: 'btn btn-sm btn-secondary'
+
+%br

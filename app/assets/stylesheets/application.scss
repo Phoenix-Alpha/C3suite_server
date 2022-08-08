@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require jquery.countdown.css
+ *= require angle-theme
+ *= require_self
+ *= require_tree .
+ */
+
+/* @import "bootstrap-sprockets"; */
+/* @import "bootstrap"; */
+
+/* Global Styles */
+
+.footer-margin{
+  margin-bottom: 100px;
+}
+
+.wrapper .footer-container{
+  margin-left: 0px !important;
+}
+
+.wrapper .section-container{  
+  background-color: #ffffff20;
+}
+
+.wrapper .content-heading{
+  background-color: #ffffff30;
+}
+
+.wrapper .breadcrumb{
+  background-color: transparent;
+}
+
+.wrapper .footer-container{
+  background-color: #ffffff30;
+}
+
+
+a:hover { background-color: transparent; }
+
+.navbar-inverse .btn-link:hover,
+.navbar-inverse .btn-link:focus {
+  text-decoration: none;
+}
+
+#dropdownUserMenu {
+  margin-top: 15px;
+  margin-right: 5px;
+}
+
+/* Label sizes */
+
+.label-xs, .label-sm, .label-md, .label-lg {
+  vertical-align: middle;
+  color: #fff;
+}
+
+.label-xs {
+  font-size: x-small;
+}
+
+.label-sm {
+  font-size: small;
+}
+
+.label-md {
+  font-size: medium;
+}
+
+.label-lg {
+  font-size: large;
+}
+
+/* Content bookmarks */
+.bookmark {
+  color: #656565;
+}
+
+.bookmarked {
+  color: #5d9cec;
+}
+
+
+/* Controls */
+#quiz-view {
+  .card > .card-header span.fa,
+  .card > .card-footer span.fa {
+    font-size: 18px;
+  }
+}
+
+#flashcard-deck {
+  .card > .card-header span.fa,
+  .card > .card-footer span.fa {
+    font-size: 18px;
+  }
+}
+

@@ -1,0 +1,31 @@
+%nav.navbar.topnavbar.navbar-dark
+  .navbar-header
+    %a.navbar-brand{ href: "/",  'data-turbolinks': "false" }
+      .brand-logo C3Suite
+
+  %ul.navbar-nav.mr-auto.flex-row
+    - if current_user
+      %li.nav-item
+        / only visible for desktops and tablet
+        %a.nav-link.d-none.d-md-block.d-lg-block.d-xl-block{ 'data-toggle-state': "aside-collapsed", 'data-trigger-resize': "", href: "#", 'data-turbolinks': "false" }
+          %em.fas.fa-bars
+        / only visible for mobile  
+        %a.nav-link.sidebar-toggle.d-md-none{ 'data-no-persist': "true", 'data-toggle-state': "aside-toggled", href: "#", 'data-turbolinks': "false" }
+          %em.fas.fa-bars
+
+  %ul.navbar-nav.flex-row
+    - if current_user
+      %li.nav-item
+        = link_to "<em class='fas fa-bookmark mr-2'></em>Bookmarks".html_safe, bookmarks_url, class: 'nav-link' if current_user.user_subscriptions.count > 0
+      %li.nav-item.dropdown
+        %a.nav-link.dropdown-toggle.dropdown-toggle-nocaret{ "data-toggle": "dropdown", href: "#dashboard" }
+          = current_user.email.downcase
+        .dropdown-menu.dropdown-menu-right.animated.fadeIn
+          = link_to 'Profile', edit_user_registration_path, class: "dropdown-item"
+          = link_to 'My Purchases', purchases_path, class: "dropdown-item"
+          = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "dropdown-item"
+    - else
+      %li.nav-item
+        = link_to 'Sign In', new_user_session_path, class: 'nav-link'
+      %li.nav-item
+        = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'

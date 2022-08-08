@@ -1,0 +1,49 @@
+{
+  "resource": "Products",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/products/:id/contents",
+  "description": "Get all contents for a product",
+  "explanation": "Use this endpoint to get all the contents for a product",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/products/62/contents",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOCwiZXhwIjoxNjAyMTQ5Mzg3fQ.50X6nr0h8g_PHTxhDnyhXn2H7LnV1Q673yXyb5GdG14",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[\n  {\n    \"id\": 435,\n    \"product_id\": 62,\n    \"parent_id\": null,\n    \"created_at\": \"2020-10-07T09:29:47.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:47.000Z\",\n    \"ancestry\": null,\n    \"actable_type\": \"Modulee\",\n    \"actable_id\": 206,\n    \"title\": \"title\",\n    \"view_count\": null,\n    \"time\": null,\n    \"row_order\": 0,\n    \"description\": null\n  },\n  {\n    \"id\": 436,\n    \"product_id\": 62,\n    \"parent_id\": null,\n    \"created_at\": \"2020-10-07T09:29:47.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:47.000Z\",\n    \"ancestry\": null,\n    \"actable_type\": \"Modulee\",\n    \"actable_id\": 207,\n    \"title\": \"title\",\n    \"view_count\": null,\n    \"time\": null,\n    \"row_order\": 1073741824,\n    \"description\": null\n  },\n  {\n    \"id\": 437,\n    \"product_id\": 62,\n    \"parent_id\": null,\n    \"created_at\": \"2020-10-07T09:29:47.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:47.000Z\",\n    \"ancestry\": null,\n    \"actable_type\": \"Modulee\",\n    \"actable_id\": 208,\n    \"title\": \"title\",\n    \"view_count\": null,\n    \"time\": null,\n    \"row_order\": 1610612736,\n    \"description\": null\n  },\n  {\n    \"id\": 438,\n    \"product_id\": 62,\n    \"parent_id\": null,\n    \"created_at\": \"2020-10-07T09:29:47.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:47.000Z\",\n    \"ancestry\": null,\n    \"actable_type\": \"Modulee\",\n    \"actable_id\": 206,\n    \"title\": \"title\",\n    \"view_count\": null,\n    \"time\": null,\n    \"row_order\": 1879048192,\n    \"description\": null\n  },\n  {\n    \"id\": 439,\n    \"product_id\": 62,\n    \"parent_id\": null,\n    \"created_at\": \"2020-10-07T09:29:47.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:47.000Z\",\n    \"ancestry\": null,\n    \"actable_type\": \"Modulee\",\n    \"actable_id\": 207,\n    \"title\": \"title\",\n    \"view_count\": null,\n    \"time\": null,\n    \"row_order\": 2013265920,\n    \"description\": null\n  },\n  {\n    \"id\": 440,\n    \"product_id\": 62,\n    \"parent_id\": null,\n    \"created_at\": \"2020-10-07T09:29:47.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:47.000Z\",\n    \"ancestry\": null,\n    \"actable_type\": \"Modulee\",\n    \"actable_id\": 208,\n    \"title\": \"title\",\n    \"view_count\": null,\n    \"time\": null,\n    \"row_order\": 2080374784,\n    \"description\": null\n  }\n]",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"bb9364e3b94dbadcfca0625f5ce3ea86\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "c7362b27-862e-4436-9cd2-4891622bd317",
+        "X-Runtime": "0.005739",
+        "Vary": "Origin",
+        "Content-Length": "1612"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

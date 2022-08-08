@@ -1,0 +1,11 @@
+.content-heading
+  Media
+
+.card.card-default
+  .card-header
+    = @media.title
+  .card-body
+    = render partial: 'media_type', locals: { media: @media }
+
+= link_to 'Back', manage_product_path(@product), class: 'btn btn-sm btn-secondary'
+= link_to 'Edit Media', edit_manage_product_media_path(@product, @media), class: 'btn btn-sm btn-secondary' if can? :update, @media.acting_as

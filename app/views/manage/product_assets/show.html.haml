@@ -1,0 +1,11 @@
+.content-heading
+  = "#{@product.title} Asset"
+
+.card.card-default
+  .card-header
+    = @asset.description
+  .card-body
+    = image_tag @asset.source_url, class: 'card-img-top img-fluid' if @asset.source.present?
+
+= link_to 'Back', manage_product_product_assets_path(@product), class: 'btn btn-sm btn-secondary'
+= link_to 'Edit Asset', edit_manage_product_product_asset_path(@product, @asset), class: 'btn btn-sm btn-secondary' if can? :update, @asset

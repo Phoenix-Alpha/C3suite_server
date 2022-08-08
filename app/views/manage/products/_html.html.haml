@@ -1,0 +1,11 @@
+.card.card-default
+  .card-header
+    - if can? :read, html
+      = link_to html.title, manage_product_html_path(@product, html.actable_id)
+    - else
+      = html.title
+
+    = render '/manage/partials/user_actions', { product: @product, content: html }
+
+  .card-body
+    = raw(html.specific.description)

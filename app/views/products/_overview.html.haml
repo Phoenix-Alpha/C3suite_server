@@ -1,0 +1,12 @@
+%div.product-overview.nopadding
+  = @product.html_description.html_safe unless @product.html_description.blank?
+  .card-columns.w-50
+    -if current_user.present? and UserSubscription.subscription_current?(current_user, @product)  
+      - @product.contents.where(actable_type: "Modulee").each do |modulee|
+        = link_to content_path(modulee), "data-turbolinks": 'false' do
+          = render partial: 'modulee', object: modulee rescue nil
+    -else
+      - @product.contents.where(actable_type: "Modulee").each do |modulee|
+        = render partial: 'modulee', object: modulee rescue nil
+              
+

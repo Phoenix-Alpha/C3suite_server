@@ -1,0 +1,22 @@
+.card.card-default
+  .card-header
+    - if can? :read, submodule
+      = link_to submodule.title, manage_product_submodule_path(@product, submodule.actable_id)
+    - else
+      = submodule.title
+
+    = render '/manage/partials/user_actions', { product: @product, content: submodule }
+
+  .card-body
+    .row
+      .col-12
+        .float-right
+          Add:
+          = render '/manage/partials/add_new_actions', { product: @product, object: submodule,type: "submodule" }
+              
+    %br
+    %div{ class: [('row sortable' if can? :update, Product), ('not-sortable' if cannot? :update, Product)] }
+      / Re-order by :row_order so that all the children specific to submodule are in order
+      - submodule.children.order(:row_order).each do |child|
+        %div{ "data-content-id": child.id, class: "#{ child.actable_type.downcase == 'html' ? 'col-12' : 'col-6' }" }
+          = render partial: '/manage/products/' + child.actable_type.downcase, object: child

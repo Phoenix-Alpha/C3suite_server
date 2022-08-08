@@ -1,0 +1,7 @@
+.nested-fields.col-6
+  .card
+    .card-body
+      -@order.each do |o|
+        = eval("#{o}_manage f")
+        
+      = link_to_remove_association 'Delete', f, class: 'btn btn-sm btn-danger'

@@ -1,0 +1,29 @@
+.content-heading
+  Account Details
+
+  .ml-auto
+    = link_to 'Edit User', edit_manage_user_path(@user), class: 'btn btn-sm btn-secondary', 'data-turbolinks': false if can? :manage, @user
+
+.card.card-default
+  .card-body
+    %p
+      %strong Username:
+      = @user.username
+      
+      %br
+      %br
+      
+      %strong Email:
+      = @user.email
+
+      - if @user.roles.present?
+        %br
+        %br
+        %strong Roles:
+        = @user.roles.map(&:name).join(', ')
+
+%br
+.row
+  .col-md-12
+    = link_to 'Back', manage_users_path, class: 'btn btn-sm btn-secondary'
+    = link_to 'Edit User', edit_manage_user_path(@user), class: 'btn btn-sm btn-secondary', 'data-turbolinks': false if can? :manage, @user

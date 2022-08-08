@@ -1,0 +1,63 @@
+{
+  "resource": "Products",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/products/:id/app_store_subscription",
+  "description": "Subscribe product for ios",
+  "explanation": "Use this endpoint to creates user subscription given ios specific purchase data",
+  "parameters": [
+    {
+      "name": "receipt_data",
+      "description": "Base64-Encoded Receipt Data from app store"
+    },
+    {
+      "name": "transaction_id",
+      "description": "Transaction id returned from app store on successful purchase"
+    },
+    {
+      "name": "expires_date",
+      "description": "The expiry date for subscription returned from app store"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/products/58/app_store_subscription?receipt_data=9010a795349cf7bd5813768ea653cc628a03ad2b953b9b2d&transaction_id=9010a795349cf7bd5813768ea653cc628a03ad2b953b9b2d&expires_date=9010a795349cf7bd5813768ea653cc628a03ad2b953b9b2d",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNjAyMTQ5Mzg3fQ.SvjJJef5mt252BkFD2Ng-RPy2_CtbFiL54Q0w2uTa3U",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "receipt_data": "9010a795349cf7bd5813768ea653cc628a03ad2b953b9b2d",
+        "transaction_id": "9010a795349cf7bd5813768ea653cc628a03ad2b953b9b2d",
+        "expires_date": "9010a795349cf7bd5813768ea653cc628a03ad2b953b9b2d"
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"message\": \"Subscription Created Successfully.\"\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"d381a6b87750ad3a489dccfa286b7fdb\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "0519b807-3524-4379-b711-12f03c89e2db",
+        "X-Runtime": "0.006218",
+        "Vary": "Origin",
+        "Content-Length": "63"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

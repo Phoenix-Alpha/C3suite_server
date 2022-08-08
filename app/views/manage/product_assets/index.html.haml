@@ -1,0 +1,26 @@
+.content-heading
+  = "#{@product.title} Assets"
+
+- if @assets.present?
+  .card-columns.assets-listing
+    - @assets.each do |asset|
+      .card.mb-4
+        %span.float-right.actions
+          = link_to '<span class="fa fa-eye"></span>'.html_safe, manage_product_product_asset_path(@product, asset), class: 'btn btn-xs btn-secondary'
+          = link_to '<span class="fa fa-pencil-alt"></span>'.html_safe, edit_manage_product_product_asset_path(@product, asset), class: 'btn btn-xs btn-secondary'
+          = link_to '<span class="fa fa-times"></span>'.html_safe, manage_product_product_asset_path(@product, asset), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-warning'
+
+        = image_tag (media_source asset), class: 'card-img-top img-fluid'
+        .card-body
+          %h4.card-title
+            = asset.description
+            %span.badge.badge-secondary.float-right
+              = asset.my_kind
+
+- else
+  %p.well
+    No records found
+
+%br
+= link_to 'Back', manage_product_path(@product), class: 'btn btn-sm btn-secondary'
+= link_to 'New Asset', new_manage_product_product_asset_path, class: 'btn btn-sm btn-success', 'data-turbolinks': false if can? :manage, @asset

@@ -1,0 +1,52 @@
+#flashcard-deck.col-lg-8.offset-lg-2.col-md-12.col-sm-12.col-xs-12
+  .row
+    .col.text-left.h3
+      = @flashcard.present? ? @flashcard.title : ( @content_id.present? ? 'Comprehensive Flashcard' : 'Audit Flashcard' )  
+    .col.text-right
+      -if @startover
+        = link_to "<span class='fa fa-sync'></span> START OVER".html_safe, @flashcard.present? ? startover_flashcard_path : (@content_id.present? ? startover_flashcards_path : audit_flashcard_path(@audit_id) if @audit_id.present?), data: { confirm: "Are you sure to start over? Your previous progess shall be lost. " }, class: "btn btn-sm btn-warning flashcard-startover", 'data-turbolinks': false
+  
+  - order = get_ordered_flashcard_sides @flashcard if @flashcard.present?
+
+  - @flashcard_items.each_with_index do |item, index|
+    - order = get_ordered_flashcard_sides item.flashcard if (@content_id.present? or @audit_id.present?)   # only works in case of comprehensive or auditable flashcards 
+    .card{ class: (index != @index ? 'd-none' : ''), 'data-flashcarditem-id': "#{item.id}", 'data-visited': (index < @index ? "true" : "false" ) }
+      .card-header
+        .h4.float-left
+          = "Flashcard #{index + 1}"
+          %small
+            of
+            = @flashcard_items.count
+        .float-right
+          #toggle-sides.btn-group-toggle{"data-toggle" => "buttons"}
+            - order.each_with_index do |label, i|         
+              -if label.to_s == 'side'
+                -if item.side.present?
+                  %label{ class: "btn btn-xs btn-info #{ (i == 0) ? 'active' : '' } #{label}-btn" }
+                    %input{type: 'radio', name: 'flashcard-sides', checked: (i == 0) ? true : '' }
+                    = get_flashcard_label item, label
+              -else
+                %label{ class: "btn btn-xs btn-info #{ (i == 0) ? 'active' : '' } #{label}-btn" }
+                  %input{type: 'radio', name: 'flashcard-sides', checked: (i == 0) ? true : '' }
+                  = get_flashcard_label item, label 
+      .card-body  
+        .flashcard-sides.d-flex.justify-content-center
+          -order.each_with_index do |o, i|
+            = eval("#{o}_view item, i")
+      .card-footer
+        .float-left.d-block.d-md-none
+          = link_to "<span class='btn-label btn-label-left'><i class='fa fa-sync'></i></span>FLIP ALL".html_safe, "#", class: 'btn btn-labeled btn-light btn-sm', id: 'flip-all-btn'
+        .float-right
+          = link_to "<span class='fa far fa-sync'></span>".html_safe, '#', class: 'btn-flip-flashcard'
+          -if @has_bookmarks
+            = link_to "<span class='fa far #{'fas' if @bookmarks.include?(item.id)} fa-heart'></span>".html_safe, '#', class: "btn-bkmark-flashcard bookmark ml-2 #{'bookmarked' if @bookmarks.include?(item.id)}",'data-flashcard-id': "#{item.flashcard.id}" ,'data-flashcarditem-id': "#{item.id}", 'data-notify': "", 'data-message': "#{@bookmarks.include?(item.id)? 'Removed from Bookmarks' : 'Added to Bookmarks'}", 'data-options': "{&quot;pos&quot;:&quot;top-right&quot;}".html_safe if @has_bookmarks
+
+
+        
+  .row.mx-2
+    .col.text-left
+      = link_to "<span class='btn-label btn-label-left'><i class='fa fa-arrow-left'></i></span>PREV".html_safe, "#", class: 'btn btn-labeled btn-primary btn-sm prev-card'
+    .col.text-center.d-none.d-sm-block
+      = link_to "<span class='btn-label btn-label-left'><i class='fa fa-sync'></i></span>FLIP ALL".html_safe, "#", class: 'btn btn-labeled btn-inverse btn-sm', id: 'flip-all-btn'
+    .col.text-right
+      = link_to "NEXT<span class='btn-label btn-label-right'><i class='fa fa-arrow-right'></i></span>".html_safe, "#", class: 'btn btn-labeled btn-primary btn-sm next-card'

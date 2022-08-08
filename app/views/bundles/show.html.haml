@@ -1,0 +1,48 @@
+.content-heading
+  .container
+    = @bundle.title
+    - sub = BundleSubscription.subscription_current?(current_user, @bundle) if current_user.present? and @bundle.present?
+.container
+  .col-xs-8.col-xs-offset-2.col-md-offset-3
+    %div
+      .h3.mb-4
+        Overview
+      .p-2
+        = raw(@bundle.description)
+  
+    -if @products.present?
+      %div
+        .h3
+          Bundled Products
+        .card-columns.p-4
+          - @products.each do |product|
+            .card.mb-4
+              = image_tag(product.image('square'), class: 'card-img-top img-fluid')
+              .card-body
+                %h4.card-title
+                  = product.title
+                %p.card-text
+                  = product.html_description.truncate(100).html_safe if product.html_description.present?
+                -if UserSubscription.subscription_current?(current_user, product)
+                  .float-left
+                    %span.text-success
+                      %em.icon-check
+                      Subscribed
+                  .float-right.b
+                    %span
+                      = link_to 'Launch Product', product_url(product), class: 'btn btn-block btn-outline-secondary', 'data-turbolinks': "false"
+                -else
+                  -if @bundle.allow_single_product_subscription
+                    = link_to "Buy Product for $ #{product.price}", product_url(product), class: 'btn btn-primary', 'data-turbolinks': "false"
+                  -else
+                    .float-right.text-muted
+                      %span
+                        No individual subscription
+
+                  
+
+                  
+                                      
+
+
+

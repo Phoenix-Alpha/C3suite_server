@@ -1,0 +1,101 @@
+.img-square {
+  width: 50%;
+}
+
+#modules-sidebar {
+  position: fixed !important;
+  min-width: 250px;
+  max-width: 250px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding-top: 20px;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
+  transition: all 0.3s;
+}
+
+#modules-sidebar.active {
+  display: inline-block;
+}
+
+#hamburger, #dismiss {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  #modules-sidebar {
+    display: none;
+  }
+
+  #hamburger, #dismiss {
+    display: inline-block;
+  }
+}
+
+.nopadding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.title {
+  margin-top: 25px;
+  line-height: 50px;
+  min-height: 50px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.modulees {
+  font-size: 16px;
+}
+
+.modulees .module {
+  padding: 8px;
+  padding-left: 16px;
+}
+
+.module:hover {
+  background-color: #fafafa;
+}
+
+.modulees .module > .module-sublinks {
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+.modulees .module > .module-sublinks > a {
+  display: inline-block;
+}
+
+.modulees .module > .module-sublinks > a:before {
+  content: "\2014  ";
+}
+
+.progress {
+  margin-top: 20px;
+  height: 5px !important;
+}
+
+.tile {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.tile:hover {
+  background-color: #EEEEEE !important;
+}
+
+.selected {
+  background-color: #BBDEFB;
+  border-right: 2px solid #2775d1;
+}

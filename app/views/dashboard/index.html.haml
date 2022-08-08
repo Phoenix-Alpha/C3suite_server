@@ -1,0 +1,45 @@
+- if @bundles.present?
+  .content-heading
+    Bundles
+  .container.ml-0.pl-0
+    .card-columns.w-75
+      - @bundles.each do |bundle|
+        .card
+          = image_tag(bundle.image('square'), class: 'card-img-top')
+          .card-body
+            %h4.card-title
+              = bundle.title
+            = link_to 'Launch', bundle_url(bundle), class: 'btn btn-block btn-primary mt-3', 'data-turbolinks': "false"
+  %br
+
+- if @products.present? && @products[:personal].present?
+  .content-heading
+    My Products
+  .container.ml-0.pl-0
+    .card-columns.w-75
+      -  @products[:personal].each do |product|
+        .card
+          = image_tag(product.image('square'), class: 'card-img-top img-thumbnail img-fluid w-100')
+          .card-body
+            %h4.card-title
+              = product.title
+            = link_to 'Launch', product_url(product), class: 'btn btn-block btn-primary mt-3', 'data-turbolinks': "false"
+  %br
+
+- if @products.present? && @products[:available].present?
+  .content-heading
+    Available Products
+  .container.ml-0.pl-0
+    .card-columns.w-75
+      - @products[:available].each do |product|
+        .card
+          = image_tag(product.image('square'), class: 'card-img-top')
+          .card-body
+            %h4.card-title
+              = product.title
+            %p.card-text
+              -if product.html_description.present?
+                = product.html_description.truncate(40).html_safe if product.html_description.present?
+              -else
+                .p-4.m-2
+            = link_to 'Buy', product_url(product), class: 'btn btn-block btn-primary mt-3', 'data-turbolinks': "false"

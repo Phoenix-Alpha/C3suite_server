@@ -1,0 +1,12 @@
+.col-lg-8.offset-lg-2.col-md-8.offset-md-2.col-sm-12.col-xs-12
+  %h2 Incorrect Questions
+  .card.card-transparent{:role => "tabpanel"}
+    .tab-content.p-0.bg-white.mt-4.pt-4
+      -@iqs.map do |content|
+        %h4.mx-4.my-2
+          = content[:content].title if content[:content].present?
+        .list-group.list-group-flush.mx-4.my-2
+          - content[:questions].each do |item|
+            %a{ href: incorrect_quizzes_path(content_id: @content.id, qid: item.id), class: 'list-group-item border-top border-primay' }
+              = item.question
+      

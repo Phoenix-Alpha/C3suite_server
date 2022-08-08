@@ -1,0 +1,14 @@
+.row.nested-fields
+  .col-md-5.form-group.field
+    = f.hidden_field :product_id, value: @product.id
+    / TODO: Make User and Role required fields
+    = f.select :user_id, options_for_select(non_contributing_users(@product.id), selected: f.object.user_id), { include_blank: true }, { class: 'chosen-select form-control user_select_field', 'data-placeholder': 'Select User' }
+  .col-md-5.form-group.field
+    = f.select :role_id, options_for_select(f.object.user_id.present? ? (User.find(f.object.user_id).roles.where.not(name: "Customer").pluck(:name, :id)) : "", selected: f.object.role_id), { include_blank: true }, { class: 'chosen-select form-control ', 'data-placeholder': 'Select Role', id: 'user_role_select_field' }
+    
+  .col-md-2
+    = link_to_remove_association "<span class='glyphicon glyphicon-remove'></span> Delete".html_safe, f, data: { confirm: "Are you sure to perform this action?" }, class: 'btn btn-danger btn-sm'
+
+  .col-md-12.form-group.field.permission_contents_field{ class: (f.object.role.name if f.object.role.present?) == 'Product Manager' ? 'd-none' : '' }
+    = f.hidden_field :selected_contents, value: contents_to_array(f.object.id), class: 'selected_contents'
+    = f.select :contents, options_for_select(Content.where(product_id: @product.id).roots.pluck(:title, :id), selected: contents_to_array(f.object.id)), { include_blank: true }, { class: 'chosen-select-multiple form-control', id: 'product_users_contents_permissions', multiple: true, 'data-placeholder': 'Select Permitted Contents' }

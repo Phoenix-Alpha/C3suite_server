@@ -1,0 +1,60 @@
+{
+  "resource": "Contents",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/contents/:id/build_flashcard",
+  "description": "Build flashcards",
+  "explanation": "Use this endpoint to create a new build flashcard",
+  "parameters": [
+    {
+      "name": "chapter_ids",
+      "description": "IDs for selected chapters to build a flashcard"
+    },
+    {
+      "name": "no_of_flashcards",
+      "description": "No of flashcard items. The number is limited to following values: 25, 50, 100 or All"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/contents/209/build_flashcard?chapter_ids[]=210&no_of_flashcards=25",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE2MDIxNDkzODR9.hhfUVv6mirk5hnt6gm1gRjmY6zkHz_wdEj5JpeBmGNs",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "chapter_ids": [
+          "210"
+        ],
+        "no_of_flashcards": "25"
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"flashcrds\": [\n    {\n      \"id\": 3,\n      \"front\": \"Tempore et totam praesentium.\",\n      \"back\": \"Optio rem eum ut.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 1610612736,\n      \"side_data\": null\n    },\n    {\n      \"id\": 1,\n      \"front\": \"Quo aspernatur debitis expedita.\",\n      \"back\": \"Rerum earum voluptatem cumque.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 0,\n      \"side_data\": null\n    },\n    {\n      \"id\": 4,\n      \"front\": \"Assumenda eveniet debitis consequuntur.\",\n      \"back\": \"Nemo vero perferendis qui.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 1879048192,\n      \"side_data\": null\n    },\n    {\n      \"id\": 10,\n      \"front\": \"Dolore vero perspiciatis voluptatum.\",\n      \"back\": \"Tempora beatae cumque odio.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 2143289344,\n      \"side_data\": null\n    },\n    {\n      \"id\": 8,\n      \"front\": \"Dolorem laboriosam est velit.\",\n      \"back\": \"Aut est modi quaerat.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 2130706432,\n      \"side_data\": null\n    },\n    {\n      \"id\": 7,\n      \"front\": \"Aperiam ipsa perferendis ut.\",\n      \"back\": \"Sit et maxime vel.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 2113929216,\n      \"side_data\": null\n    },\n    {\n      \"id\": 2,\n      \"front\": \"Nobis et natus voluptates.\",\n      \"back\": \"Est exercitationem in et.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 1073741824,\n      \"side_data\": null\n    },\n    {\n      \"id\": 6,\n      \"front\": \"Fugiat neque cum quis.\",\n      \"back\": \"Sit mollitia ea consequatur.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 2080374784,\n      \"side_data\": null\n    },\n    {\n      \"id\": 9,\n      \"front\": \"Soluta explicabo sit nemo.\",\n      \"back\": \"Neque velit doloremque vero.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 2139095040,\n      \"side_data\": null\n    },\n    {\n      \"id\": 5,\n      \"front\": \"Cupiditate provident dolores cumque.\",\n      \"back\": \"Reiciendis et ipsam debitis.\",\n      \"flashcard_id\": 1,\n      \"row_order\": 2013265920,\n      \"side_data\": null\n    }\n  ]\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"32585e2a9911df5df5ede926d7d4a600\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "36cdd672-da07-4dd9-9e78-666d689d14d4",
+        "X-Runtime": "0.013627",
+        "Vary": "Origin",
+        "Content-Length": "1443"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

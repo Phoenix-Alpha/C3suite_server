@@ -1,0 +1,41 @@
+.card
+  - progress = show_progress flashcard_block
+  .card-header
+    %h4
+      = flashcard_block.title
+    .badge.badge-info.content-type-badge
+      Flashcard
+  .card-body.pt-0
+    .row.mt-4
+      .col-md-4
+        = image_tag(flashcard_block.image('square'), class: 'card-img-top img-block wd-xs')
+      .col-md-8
+        = raw truncate(flashcard_block.description.html_safe, length: 111, omission: '... ')
+
+  - if current_user.present?
+    %table.table
+      %tbody
+        %tr
+          %td
+            %strong
+              Status
+          %td
+            = construct_string flashcard_block
+          %td
+            .d-flex.align-items-center
+              .w-100{ 'data-toggle': "tooltip", 'data-title': "Health" }
+                
+                .progress.progress-xs.m-0
+                  .progress-bar{ class: (progress < 40 ? 'bg-yellow' : 'bg-green' ), style: "width:#{progress}%" }
+              .w-xxs.text-right
+                .text-bold.text-muted.ml-1
+                  = "#{progress}%"
+        %tr
+          %td
+            %strong
+              Last Active
+          %td
+            = last_active flashcard_block
+
+  .card-footer.p-1.bg-gray
+    = link_to "#{ progress.present? ? (progress > 0 ? 'Continue' : 'Start') : 'Start' }",flashcard_path(flashcard_block.actable_id), class: 'btn btn-large btn-secondary',  "data-turbolinks": 'false'

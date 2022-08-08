@@ -1,0 +1,38 @@
+.h3 Modulees
+
+- if @modulees.present?
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th Title
+        %th
+    %tbody
+      - @modulees.each do |modulee|
+        - if can? :read, Modulee
+          %tr 
+            %td
+              = link_to modulee.title, manage_product_modulee_path(@product, modulee.actable_id), class: 'btn-link'
+            %td 
+              .btn-group
+                %button{ type: 'button', class: 'btn btn-primary btn-sm dropdown-toggle', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } }
+                  Actions
+                  %span.caret
+                %ul.dropdown-menu
+                  - if can? :read, modulee
+                    %li
+                      = link_to 'View', manage_product_modulee_path(@product, modulee.actable_id)
+                  - if can? :manage, modulee
+                    %li
+                      = link_to 'Edit', edit_manage_product_modulee_path(@product, modulee.actable_id)
+                  - if can? :manage, modulee
+                    %li
+                      = link_to 'Destroy', manage_product_modulee_path(@product, modulee.actable_id), method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  %p.well
+    No records found
+
+%br
+- if can? :manage, @user
+  = link_to 'New Modulee', new_manage_product_modulee_path, class: 'btn btn-sm btn-success'
+
+= link_to 'Back', manage_product_path(@product), class: 'btn btn-sm btn-primary'

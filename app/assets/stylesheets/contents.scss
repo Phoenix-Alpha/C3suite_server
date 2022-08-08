@@ -1,0 +1,18 @@
+// Place all the styles related to the contents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.content-type-badge {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0px;
+  padding: 5px 10px;
+  font-weight: normal;
+  float: right;
+}
+
+.img-block{
+  height : 100px;
+  width : 100px;
+}

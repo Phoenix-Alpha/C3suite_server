@@ -1,0 +1,94 @@
+#quiz-results.col-lg-8.offset-lg-2.col-md-12.col-sm-12.col-xs-12
+  %h2
+    - if @quiz.present?
+      = @quiz.title
+  
+  - total_questions = @quiz.questions.count if @quiz.present?
+  - correct_answers = @data.values.count {|v| v[:selected] == '0'}
+  - incorrect_answers =  @data.keys.count - @data.values.count {|v| v[:selected] == '0' or v[:selected] == '-1' }
+  - skipped_questions = @data.keys.count - @data.values.count {|v| v[:selected] != '-1'}
+
+  %span.h4
+    = "Total Questions Attempted = #{@data.keys.count} #{@quiz.present? ? '/' + total_questions.to_s : ''}"
+    %br
+  %span.text-success.h4
+    = "Correct Answers = #{correct_answers}"
+    -if @quiz.present?
+      %span 
+        = " / #{get_percentage correct_answers, total_questions} %"
+    %br
+  %span.text-danger.h4
+    = "Incorrect Answers = #{incorrect_answers}"
+    -if @quiz.present?
+      %span.ml-4
+        = "#{get_percentage incorrect_answers, total_questions} %"
+    %br
+  %span.text-warning.h4
+    = "Unattempted Questions = #{skipped_questions}"
+    -if @quiz.present?
+      %span.ml-4
+        = "#{get_percentage skipped_questions, total_questions} %"
+    %br
+
+  .row.mt-3
+    .col.float-left
+      - if @quiz.present? && @quiz.passing_percentage?
+        - result = result_status correct_answers, total_questions, @quiz.passing_percentage
+        %span{ class: "badge badge-md badge-#{result ? 'success' : 'danger'}"}
+          = result ? "Passed" : "Failed"
+    .col
+      %p.text-muted.float-right Click the toggle button to view explanation
+
+  - @questions.each_with_index do |q, index|
+    - k = 1
+    - opts = {}
+    - opts[0] = q.correct
+    - selected = @data["#{q.id}"][:selected]
+
+    - while (k < 10 && distractor = q.send("distractor#{k}"))
+      - if distractor.present?
+        - opts[k] = distractor
+      - k += 1
+
+    - order = @data["#{q.id}"][:order].split('')
+    - opts = opts.sort_by{|obj| order.index obj.first.to_s }
+
+    .card.card-default.mt-2.mb-4.pt-2
+      .card-header
+        %h3.float-left
+          = "Question #{index + 1}"
+          %small
+            of
+            - if @quiz.present?
+              = @quiz.questions.count
+            - else
+              = @questions.count
+        .float-right
+          - check = selected == "0"
+
+          %span{ class: "badge badge-#{check ? 'success' : (selected == "-1" ? 'warning' : "danger") }" }
+            = check ? "CORRECT" : (selected == "-1" ? "UNATTEMPTED" : "INCORRECT")
+          %label.switch.switch-md.float-right.ml-2
+            %input.toggle-explanation{ type: 'checkbox' }
+            %span
+        
+        
+        
+
+      .card-body
+        .question{ "data-explanation": q.explanation, 'data-question-id': "#{q.id}", 'data-state': 0 }
+          %h4
+            = q.question
+
+          %p.distractors
+            - opts.each_with_index do |opt, index|
+              - current_index = opt[0].to_s
+              %span{ class: "fa fa-#{ (selected == current_index) ? 'dot-circle' : 'circle' }" }
+              %span{ style: "color: #{ show_opt selected, opt, q.correct }" }
+                = opt[1]
+              %br
+
+          %p.explanation
+      .card-footer#result-bookmarks
+        .float-right
+          = link_to "<span class='fa far #{'bookmarked' if @bookmarks.include?(q.id)} fa-heart'></span>".html_safe, '#', class: "btn-bkmark-quiz bookmark #{'bookmarked' if @bookmarks.include?(q.id)} float-right", 'data-question-id': "#{q.id}", 'data-turbolinks': 'false', 'data-notify': "", 'data-message': "#{@bookmarks.include?(q.id)? 'Removed from Bookmarks' : 'Added to Bookmarks'}", 'data-options': "{&quot;pos&quot;:&quot;top-right&quot;}".html_safe, 'data-question-id': "#{q.id}", 'data-turbolinks': 'false'

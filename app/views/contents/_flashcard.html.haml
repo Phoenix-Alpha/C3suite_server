@@ -1,0 +1,33 @@
+.list-group
+  = link_to flashcard_path(flashcard.actable_id), class: 'list-group-item',  "data-turbolinks": 'false' do
+    .badge.badge-info.content-type-badge
+      Flashcard
+    %table.wd-wide
+      %tbody
+        %tr
+          %td.wd-xs
+            .px-2
+              = image_tag(flashcard.image('square'), class: 'img-fluid rounded')
+          %td
+            .px-2
+              %h4.mb-2
+                = flashcard.title
+              %small.text-muted
+                - description = flashcard.description.present? ? flashcard.description.html_safe : '--'
+                = raw truncate(strip_tags(description), length: 111, omission: '... ')
+          - if current_user.present?
+            %td.wd-sm.d-none.d-lg-table-cell
+              .px-2
+                %p.m-0 Last Active
+                %small.text-muted
+                  = last_active flashcard
+            %td.wd-sm.d-none.d-lg-table-cell
+              .px-2
+                %p.m-0 Status
+                %small.text-muted
+                  = construct_string flashcard
+            %td.wd-xs
+              .px-2
+                - progress = show_progress flashcard
+                .progress-bar.progress-xs{ class: (progress < 50 ? 'bg-yellow' : 'bg-green' ), style: "width: #{progress}%" }
+                  %span.sr-only= "#{progress}%"

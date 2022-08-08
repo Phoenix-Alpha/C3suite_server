@@ -1,0 +1,49 @@
+{
+  "resource": "Bundles",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "api/v1/bundles/:id",
+  "description": "Get a bundle for a given ID",
+  "explanation": "Use this endpoint to get a single bundle against the given ID",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "api/v1/bundles/1",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDIxNDkzNzh9.G3763ePkEHTqaCuTvW6WOdc94Sp5hBE8y0rq-K_n-GY",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true,\n  \"bundle\": {\n    \"id\": 1,\n    \"title\": \"Corey Stark Jr.\",\n    \"description\": \"Quis rerum laboriosam. Voluptatibus soluta asperiores. Eum laboriosam voluptatibus.\",\n    \"products\": [\n      \"1\",\n      \"2\",\n      \"3\"\n    ],\n    \"allow_single_product_subscription\": false,\n    \"price\": \"71674.72\",\n    \"created_at\": \"2020-10-07T09:29:38.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:38.000Z\",\n    \"slug\": \"corey-stark-jr\",\n    \"app_store_bundle_id\": null,\n    \"app_store_iaps\": null,\n    \"unsubscribed\": [\n      {\n        \"id\": 1,\n        \"title\": \"Connie Howe VM\",\n        \"icon\": null,\n        \"created_at\": \"2020-10-07T09:29:38.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:38.000Z\",\n        \"visibility\": \"All\",\n        \"tagline\": null,\n        \"description\": \"Quos consectetur est. Veritatis omnis eos. Dolor provident minus.\",\n        \"pricing_model\": null,\n        \"frequency\": null,\n        \"price\": \"60777.62\",\n        \"slug\": \"connie-howe-vm\",\n        \"tags\": [\n\n        ],\n        \"configurations\": {\n        },\n        \"background\": \"\",\n        \"image\": \"/images/placeholder.png\",\n        \"app_store_iaps\": null,\n        \"app_store_bundle_id\": \"com.test.app\"\n      },\n      {\n        \"id\": 2,\n        \"title\": \"Marnie White\",\n        \"icon\": null,\n        \"created_at\": \"2020-10-07T09:29:38.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:38.000Z\",\n        \"visibility\": \"All\",\n        \"tagline\": null,\n        \"description\": \"Numquam praesentium sed. Est et ut. Eaque incidunt libero.\",\n        \"pricing_model\": null,\n        \"frequency\": null,\n        \"price\": \"48062.03\",\n        \"slug\": \"marnie-white\",\n        \"tags\": [\n\n        ],\n        \"configurations\": {\n        },\n        \"background\": \"\",\n        \"image\": \"/images/placeholder.png\",\n        \"app_store_iaps\": null,\n        \"app_store_bundle_id\": \"com.test.app\"\n      },\n      {\n        \"id\": 3,\n        \"title\": \"Robbin Nolan\",\n        \"icon\": null,\n        \"created_at\": \"2020-10-07T09:29:38.000Z\",\n        \"updated_at\": \"2020-10-07T09:29:38.000Z\",\n        \"visibility\": \"All\",\n        \"tagline\": null,\n        \"description\": \"Fuga aperiam omnis. Aut et quis. Voluptas aut consequatur.\",\n        \"pricing_model\": null,\n        \"frequency\": null,\n        \"price\": \"70066.93\",\n        \"slug\": \"robbin-nolan\",\n        \"tags\": [\n\n        ],\n        \"configurations\": {\n        },\n        \"background\": \"\",\n        \"image\": \"/images/placeholder.png\",\n        \"app_store_iaps\": null,\n        \"app_store_bundle_id\": \"com.test.app\"\n      }\n    ]\n  },\n  \"user\": {\n    \"id\": 1,\n    \"email\": \"uzair@emerssive.com\",\n    \"created_at\": \"2020-10-07T09:29:37.000Z\",\n    \"updated_at\": \"2020-10-07T09:29:37.000Z\",\n    \"username\": \"testuser\",\n    \"ancestry\": null,\n    \"stripe_customer_id\": null\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"96046b6a2e4c28019f8dcb71860d7538\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "18b2f209-846e-4a37-b11e-9f5249ec3f9f",
+        "X-Runtime": "3.243684",
+        "Vary": "Origin",
+        "Content-Length": "1970"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ui-sortable {
+  /*margin-left: -40px;
+  margin-right: 0px;*/
+}
+
+/*.not-sortable, .ui-sortable-handle {
+  margin-left: -40px;
+  margin-right: -40px;
+  list-style: none;
+}*/
+
+ul.sortable {
+  list-style: none;
+}
+
+.sortable > .col-md-6 {
+  /*margin-left: 20px;*/
+}
+
+.product-title {
+  text-align: center;
+}
+
+.content-image-container
+{
+  position:relative;
+  display:inline-block;
+  text-align:center;
+}
+
+.content-image-button
+{
+  position:absolute;
+  bottom: 10%;
+  right: 10%;
+  left: 10%;
+  width:80%;
+  height:20%;
+}
+
+.img-banner {
+  max-height: 30rem;
+}
+
+.img-callout {
+  position: relative;
+  float: left;
+  margin-top: -160px;
+  left: 40px;
+  border-width: 6px;
+  border-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border-style: solid;
+  width: 20%;
+}
+
+@media (max-width: 767px) {
+  .img-callout {
+    position: relative;
+    float: none;
+    top: initial;
+    margin-left: auto;
+    margin-right: auto;
+    left: initial;
+    right: initial;
+    border-width: 6px;
+    border-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    max-width: 100%;
+  }
+}
+
+// Bookmarks Button
+/*.user-bookmark-btn {
+  position: absolute;
+  top: 10px;
+  float: right;
+}*/
+
+.breadcrumb {
+  width: 100%;
+  margin-left: 0px !important;
+}
+
+.level_0 {
+  font-weight: bold;
+}
+
+.level_1 {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.level_2 {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+
+/* Bookmarks */
+
+.list-group > .btn-bkmark-quiz,
+.list-group > .btn-bkmark-flashcard,
+.list-group > .btn-bkmark-html {
+  /*display: none !important;*/
+}
+
+.list-group:hover > .btn-bkmark-quiz,
+.list-group:hover > .btn-bkmark-flashcard,
+.list-group:hover > .btn-bkmark-html {
+  /*display: block !important;*/
+}
+
+.list-group > .btn-bkmark-quiz,
+.list-group > .btn-bkmark-flashcard,
+.list-group > .btn-bkmark-html {
+  /*position: relative !important;
+  top: -35px;
+  float: right;
+  right: 6px;
+  margin-top: 0px;*/
+}
+
+
+/* TinyMCE */
+.mce-branding { display: none !important; }
+
+
+/* Product Overview */
+.product-overview { margin: 15px 0px; }
+
+
+/* More Actions Button (product / show) */
+.more-actions .dropdown-menu {
+  right: 0;
+  left: auto;
+}

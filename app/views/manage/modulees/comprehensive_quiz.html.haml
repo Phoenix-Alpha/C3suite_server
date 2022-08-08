@@ -1,0 +1,54 @@
+.content-heading
+  Select Questions for Comprehensive Quiz
+
+- if @modulee.present? && @content.present?
+  = form_with(url: comprehensive_quiz_submit_manage_product_modulee_path, method: 'post') do |f|
+  
+    - module_check = all_modulee_questions_selected? @content
+        
+    %div.clearfix.module-panel
+      %h4
+        Select all
+        %small (from all Quizzes)
+      %label.switch.switch-md
+        = f.check_box 'modulee', { checked: module_check ? true : false, class: 'checkAllFromModule' }, nil , nil
+        %span
+
+    - @content.each_with_index do |c, index|
+      .card.card-default.chapter-panel
+        - questions = c.specific.questions
+        - all = questions.pluck(:id).map(&:to_s)
+
+        - if @modulee.configurations[:comprehensive_questions] and !module_check
+          - chapter_check = false
+          
+          - chapter_check = all_chapter_questions_selected? all
+          - question_check = any_chapter_question_selected? all
+
+        .card-header
+          %span.float-left
+            = c.title
+          .btn-toggle.float-right.ml-1
+            %span.btn.btn-xs.btn-secondary
+              .icon{ class: (module_check or question_check) ? 'fa fa-chevron-up' : 'fa fa-chevron-down' }
+
+          .btn-group-toggle.float-right
+            %label{ class: 'btn btn-xs btn-primary' }
+              = f.check_box :chapter , { checked: (module_check or chapter_check) ? true : false , class: 'checkAllFromChapter' }, nil , nil
+              = "Select all #{questions.count} Questions"
+          
+        .card-body.parent{ class: (module_check or question_check) ? "" : "d-none" }
+          .row.question-panel
+            - questions.each do |q, i|
+              .col-md-6
+                .input-group
+                  .input-group-prepend
+                    .input-group-text.bg-dark
+                      = f.check_box :comprehensive_questions, { checked: @modulee.configurations[:comprehensive_questions] ? ((@modulee.configurations[:comprehensive_questions].include? "#{q.id}") ? true : false) : false , multiple: true, class: 'questionCheck' }, q.id , nil
+                  = text_area_tag "question", q.question, { class: 'form-control', rows: 3, cols: 7, disabled: true }
+
+    .form-group
+      = f.submit "Save", class: 'btn btn-md btn-primary'
+
+- else
+  No Record Found

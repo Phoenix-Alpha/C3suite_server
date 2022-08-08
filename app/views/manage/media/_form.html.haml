@@ -1,0 +1,56 @@
+= form_for [:manage, @product, @media], html: { multipart: true } do |f|
+  .card.card-default
+    .card-body.col-6
+      = errors_for(@media)
+
+      = f.hidden_field :product_id, value: @product.id
+      = f.hidden_field :parent_id, value: @content.id if @content.present?
+      = f.hidden_field :duration, class: 'media-duration'
+      .form-group
+        %label= f.label :type
+        %br
+        = f.select :local_type, options_for_select([''] + Media::MEDIA_TYPES, selected: @media.local_type), {}, { class: 'chosen-select form-control', 'data-placeholder': 'Select Media Type' }
+
+      .form-group
+        %label= f.label :title
+        = f.text_field :title, class: 'form-control'
+
+      .form-group
+        %label= f.label :caption
+        = f.text_field :caption, class: 'form-control'
+
+      .form-group.conditional-field{ class: ('d-none' if @media.local_type == 'Image') }
+        %label= f.label :transcript
+        = f.text_area :transcript, class: 'form-control', rows: 7
+
+      .form-group
+        %label= f.label :source, 'Upload Media File' 
+        -if @media.local_type == 'Video'
+          %small (mp4, webm, mov)
+        -if @media.local_type == 'Audio'
+          %small (mp3, mpeg)
+        -if @media.local_type == 'Image'
+          %small (png, jpeg, jpg, gif)  
+        %br
+        = f.hidden_field :source, value: @media.cached_source_data
+        = f.file_field :source, required: @media.source.present? ? false : true, class: 'media-field'
+
+
+      / TODO: Uncomment after layout update
+      / .form-group
+      /   %label= f.label :thumbnail_url, 'Remote Media URL'
+      /   = f.text_field :remote_source_url, class: 'form-control'
+
+    / TODO: Fix selected image snapshot appearance issue
+    / .col-md-6
+    /   #image-holder.col-md-9
+    /     = image_tag(@media.source_url) if @media.source_url.present?
+
+    /   .col-md-3.pull-left
+    /     - if @media.source_url.present?
+    /       = f.check_box :remove_source
+    /       Remove
+
+    .card-footer
+      = link_to 'Back', manage_product_path(@product), class: 'btn btn-sm btn-secondary'
+      = f.submit class: 'btn btn-sm btn-primary'

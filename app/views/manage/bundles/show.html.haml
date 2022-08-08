@@ -1,0 +1,57 @@
+.content-heading
+  = @bundle.title
+  .ml-auto
+    = link_to 'Back', manage_bundle_path(@bundle), class: 'btn btn-sm btn-secondary'
+    = link_to 'Edit Bundle', edit_manage_bundle_path(@bundle), class: 'btn btn-sm btn-secondary', 'data-turbolinks': false if can? :update, @bundle
+  %button.btn.btn-secondary.dropdown-toggle{"data-toggle": "dropdown", type: "button"} More Actions
+  .dropdown-menu.dropdown-menu-right{role: "menu"}
+    = link_to "View Assets", manage_bundle_bundle_assets_path(@bundle), class: 'dropdown-item' if can? :read, @bundle
+    = link_to "Add an Asset", new_manage_bundle_bundle_asset_path(@bundle), class: 'dropdown-item' if can? :update, @bundle
+
+.container
+  .col-xs-8.col-xs-offset-2.col-md-offset-3
+    %div.p-4
+      .h2.mb-4
+        Overview
+      = raw(@bundle.description)
+      .col-12.p-4.b  
+        %span.h2.mt-2
+          $
+          = @bundle.price
+
+    -if @products.present?
+      %div.p-4
+        .h2
+          Products
+        .text-muted
+          There are #{@products.count} Products in this Bundle
+        .row.mt-4
+          - @products.each do |product|
+            .col-6
+              .card.b
+                .card-header
+                  %h3.card-title
+                    = product.title
+                .card-body.p-4
+                  = raw truncate(product.html_description.html_safe, length: 111, omission: '... ')
+                  .row
+                    .col-md-3.col-sm-4.col-xs-12
+                      .panel.panel-default.panel-body
+                        %h3
+                          $
+                          = product.price
+                .card-footer
+                  .float-right.b
+                    %span
+                      = link_to 'Manage Product', manage_product_path(product), class: 'btn btn-block btn-outline-secondary', 'data-turbolinks': "false"
+
+
+    %br
+    = link_to 'Back', manage_bundle_path(@bundle), class: 'btn btn-sm btn-secondary'
+    = link_to 'Edit Bundle', edit_manage_bundle_path(@bundle), class: 'btn btn-sm btn-secondary', 'data-turbolinks': false if can? :update, @bundle
+        
+
+
+
+
+

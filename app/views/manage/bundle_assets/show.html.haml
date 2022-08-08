@@ -1,0 +1,11 @@
+.content-heading
+  = "#{@bundle.title} Asset"
+
+.card.card-default
+  .card-header
+    = @asset.description
+  .card-body
+    = image_tag @asset.source_url, class: 'card-img-top img-fluid' if @asset.source.present?
+
+= link_to 'Back', manage_bundle_bundle_assets_path(@bundle), class: 'btn btn-sm btn-secondary'
+= link_to 'Edit Asset', edit_manage_bundle_bundle_asset_path(@bundle, @asset), class: 'btn btn-sm btn-secondary' if can? :update, @asset

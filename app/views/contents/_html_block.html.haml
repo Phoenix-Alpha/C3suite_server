@@ -1,0 +1,32 @@
+.card.b
+  -status =  construct_string html_block
+  .card-header
+    %h4
+      = html_block.title
+    .badge.badge-info.content-type-badge
+      Html
+  .card-body.pt-0
+    .row.mt-4
+      .col-md-4
+        = image_tag(html_block.image('square'), class: 'card-img-top img-block wd-xs')
+      .col-md-8
+        - description = html_block.specific.html_source.present? ? html_block.specific.html_source.html_safe : '--'
+        = raw truncate(strip_tags(description), length: 111, omission: '... ')
+  - if current_user.present?
+    %table.table
+      %tbody
+        %tr
+          %td
+            %strong
+              Status
+          %td
+            = status
+        %tr
+          %td
+            %strong
+              Last Active
+          %td
+            = last_active html_block
+
+  .card-footer.p-1.bg-gray
+    = link_to "#{ status.present? ? (status ==  'Not Started' ? 'Start' : 'Continue') : 'Start' }", html_path(html_block.actable_id), class: 'btn btn-large btn-secondary',  "data-turbolinks": 'false'

@@ -1,0 +1,45 @@
+.row
+  .col-md-8
+    - @group.each do |i, content_group|
+      - first = content_group.values[0].first if content_group.values[0].present?
+      %h3
+        = link_to first.product.title, manage_products_path(first.product) if first.product.present?
+      %table.table.table-condensed
+        %thead
+          %tr
+            %th Content
+            %th Type
+            %th
+        %tbody
+          - content_group.each do |i, module_group|
+            - module_group.each do |content|
+              %tr
+                %td
+                  - if content.actable_type != "Quiz"
+                    = link_to content.title, content_method(content)
+                  - else
+                    = content.title
+                %td
+                  = content.actable_type
+                %td
+                  .btn-group
+                    %button.btn.btn-secondary{ type: 'button' } Action
+                    %button.btn.dropdown-toggle.btn-secondary{ 'data-toggle': 'dropdown', type: 'button' }
+                      
+                    .dropdown-menu.dropdown-menu-right{ role: 'menu' }
+                      - if can? :read, content
+                        = link_to 'View', manage_content_path(content), class: 'dropdown-item'
+                      - if can? :update, content
+                        = link_to 'Edit', edit_manage_content_path(content), class: 'dropdown-item'
+                      - if can? :manage, content
+                        = link_to 'Destroy', manage_content_path(content), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
+  .col-md-4
+    .h3 Contents
+    = search_form_for @q, url: manage_contents_path, html: { class: 'form-group' } do |f|
+      = f.label :content_type_cont
+      = f.collection_select :actable_type_cont, Content.all.pluck("actable_type").uniq, :titleize, :titleize, { include_blank: 'All' }, { class: 'form-control'}
+      %br
+      = f.label :title_cont
+      = f.search_field :title_cont, { class: 'form-control' }
+      %br
+      = f.submit class: 'btn btn-default'

@@ -1,0 +1,13 @@
+
+en:
+  errors:
+    messages:
+      carrierwave_processing_error: "Cannot resize media."
+      carrierwave_integrity_error: "Not a media."
+      carrierwave_download_error: "Couldn't download media."
+      extension_whitelist_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
+      extension_blacklist_error: "You are not allowed to upload %{extension} files, prohibited types: %{prohibited_types}"
+  faker:
+    name:
+      title: 'title'
+    separator: ' & '
